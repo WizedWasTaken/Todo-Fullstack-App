@@ -6,6 +6,10 @@ import { normalMenuItems, loginRegisterMenuItems } from '@/util/menuItems';
 
 import HamburgerMenu from '@/components/non-reusable/header/HamburgerMenu';
 
+/**
+ * Navigation bar with linkt to different pages, links can be added in the menuItems.ts file
+ * @returns HTML for the nav bar
+ */
 export default function NavBar() {
   const pathname = usePathname();
 

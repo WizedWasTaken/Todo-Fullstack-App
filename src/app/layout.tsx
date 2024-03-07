@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ReactNode } from 'react';
 import { inter } from '@/util/fonts';
 import './styling/globals.scss';
 
@@ -13,13 +14,8 @@ export const metadata: Metadata = {
   },
   description: 'The official todo app. Made by Noah Nielsen',
 };
-export default function RootLayout({
-  children,
-  title = 'Frontpage',
-}: Readonly<{
-  children: React.ReactNode;
-  title?: string;
-}>) {
+
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en'>
       <body className={(inter.className, 'min-h-screen flex flex-col')}>

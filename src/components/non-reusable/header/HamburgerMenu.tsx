@@ -3,13 +3,18 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { normalMenuItems, loginRegisterMenuItems } from '@/util/menuItems';
 
+/**
+ * HTML for the hamburger menu in the nav bar.
+ * This will be shown in the nav bar, and is used to generate the nav items
+ * This will only show in mobile view (below 768 px)
+ * @returns HTML for the hamburger menu
+ */
 export default function HamburgerMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
 
   /**
    * Toggles the hamburger menu
-   * @returns void
    */
   const toggleHamburgerMenu = () => {
     setMenuOpen(!menuOpen);

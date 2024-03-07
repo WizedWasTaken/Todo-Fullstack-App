@@ -1,5 +1,7 @@
-import RootLayout from './layout';
-
+/**
+ * 404!
+ * @returns HTML for the 404 page
+ */
 export default function Custom404() {
   return (
     <main className='flex flex-col flex-grow items-center justify-center'>
