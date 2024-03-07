@@ -16,8 +16,9 @@ export const metadata: Metadata = {
 };
 
 /**
- *
+ * Layout for the app
  * @param param0 Children to be rendered
+ * @param param0.children Children to be rendered
  * @returns HTML layout for the app
  */
 export default function RootLayout({ children }: { children: ReactNode }) {
