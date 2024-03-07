@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -17,6 +19,7 @@ export default function HamburgerMenu() {
    * Toggles the hamburger menu
    */
   const toggleHamburgerMenu = () => {
+    //   TODO: Find a way to make this feel better, instead of being so fast.
     setMenuOpen(!menuOpen);
   };
 
@@ -28,26 +31,34 @@ export default function HamburgerMenu() {
         className='h-full flex flex-col gap-2 w-full'
         onClick={toggleHamburgerMenu}
       >
+        {/* TODO: Hamburger animated icon isn't centered when opened. */}
         <div
-          className={`border-2 border-black w-9 transition-transform duration-300`}
+          className={`border-2 border-black w-9 transition-transform duration-300 ${
+            menuOpen ? 'transform -rotate-45 translate-y-4' : ''
+          }`}
         ></div>
         <div
-          className={`border-2 border-black w-9 transition-opacity duration-300`}
+          className={`border-2 border-black w-9 transition-transform duration-300 ${
+            menuOpen ? '-translate-x-20' : 'translate-x-0'
+          }`}
         ></div>
         <div
-          className={`border-2 border-black w-9 transition-transform duration-300`}
+          className={`border-2 border-black w-9 transition-transform duration-300 ${
+            menuOpen ? 'transform rotate-45 -translate-y-2' : ''
+          }`}
         ></div>
       </div>
       {/* Hamburger Menu Content */}
       <div
-        className={`absolute p-5 inset-0 mt-20 mb-5 bottom-5 top-3 h-full w-full flex flex-end justify-end transition-opacity duration-300 ${
-          menuOpen ? 'opacity-100 bg-black bg-opacity-50' : 'opacity-0'
+        className={`absolute p-5 mt-16 mb-6 bottom-10 left-0 top-1 w-full flex flex-end justify-end transition-translate duration-300 ${
+          menuOpen ? 'translate-x-0 bg-black bg-opacity-70' : 'translate-x-full'
         }`}
       >
         <ul
           className={`gap-2 w-full ml-10 md:hidden duration-150 ${
-            menuOpen ? 'flex opacity-100 flex-col' : 'opacity-0'
+            menuOpen ? 'flex translate-x-0 flex-col' : 'translate-x-full'
           }`}
+          onClick={toggleHamburgerMenu}
         >
           {normalMenuItems.map((item, index) => {
             return (

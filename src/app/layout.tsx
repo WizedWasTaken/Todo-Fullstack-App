@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { inter } from '@/util/fonts';
-import './styling/globals.scss';
+import '@/styling/globals.scss';
 
 // Imports
 import Header from '@/components/non-reusable/header/HeaderComponent';
@@ -18,7 +18,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en'>
-      <body className={(inter.className, 'min-h-screen flex flex-col')}>
+      <body
+        className={
+          (inter.className, 'min-h-screen flex flex-col overflow-hidden')
+        }
+      >
         <Header />
         {children}
         <Footer />

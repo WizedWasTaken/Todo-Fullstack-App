@@ -4,8 +4,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { normalMenuItems, loginRegisterMenuItems } from '@/util/menuItems';
 
-import HamburgerMenu from '@/components/non-reusable/header/HamburgerMenu';
-
 /**
  * Navigation bar with linkt to different pages, links can be added in the menuItems.ts file
  * @returns HTML for the nav bar
@@ -15,7 +13,6 @@ export default function NavBar() {
 
   return (
     <nav className='container mx-auto flex justify-between flex-row'>
-      <HamburgerMenu />
       <ul className='w-full hidden justify-between flex-row md:flex mt-5'>
         <ul className='flex justify-center w-full gap-2 flex-row'>
           {normalMenuItems.map((item, index) => {
