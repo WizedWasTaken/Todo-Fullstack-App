@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description: 'The official todo app. Made by Noah Nielsen',
 };
 
+/**
+ *
+ * @param param0 Children to be rendered
+ * @returns HTML layout for the app
+ */
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en'>

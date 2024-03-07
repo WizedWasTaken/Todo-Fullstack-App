@@ -10,7 +10,7 @@ export default function Header() {
   return (
     <header className='p-5 flex md:flex-col justify-around items-center border-b-2 border-slate-400 overflow-hidden'>
       <HamburgerMenu />
-      <h1>Header</h1>
+      <h1 className='w-full text-center'>Noah Trello Kopi</h1>
       <NavBar />
     </header>
   );

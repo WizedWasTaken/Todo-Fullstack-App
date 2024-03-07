@@ -65,7 +65,7 @@ export default function HamburgerMenu() {
               <li key={index}>
                 <Link href={item.path}>
                   <div
-                    className={` bg-gray-200 hover:bg-gray-300 px-2 py-2 rounded-md ${
+                    className={` bg-gray-200 hover:bg-gray-300 w-20 ml-auto px-2 py-2 rounded-md ${
                       pathname === item.path
                         ? 'border-r-4 border-r-blue-500'
                         : 'text-primary-500'
@@ -82,7 +82,7 @@ export default function HamburgerMenu() {
               <li key={index}>
                 <Link href={item.path}>
                   <div
-                    className={` bg-gray-200 hover:bg-gray-300 p-2 py-2 rounded-md ${
+                    className={` bg-gray-200 hover:bg-gray-300 w-20 ml-auto p-2 py-2 rounded-md ${
                       pathname === item.path
                         ? 'border-r-4 border-r-blue-500'
                         : 'text-primary-500'
