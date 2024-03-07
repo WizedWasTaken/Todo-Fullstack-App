@@ -1,5 +1,5 @@
 /**
- * Menu items for the application
+ * Normal navigation list items for the nav bar
  * This will be shown in the nav bar, and is used to generate the nav items
  */
 export const normalMenuItems = [
@@ -25,6 +25,10 @@ export const normalMenuItems = [
   },
 ];
 
+/**
+ * Login and register navigation list items for the nav bar
+ * This will be shown in the nav bar, and is used to generate the nav items
+ */
 export const loginRegisterMenuItems = [
   {
     name: 'Login',

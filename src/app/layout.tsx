@@ -12,7 +12,6 @@ export const metadata: Metadata = {
     default: 'Todo App',
   },
   description: 'The official todo app. Made by Noah Nielsen',
-  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
 export default function RootLayout({
   children,
