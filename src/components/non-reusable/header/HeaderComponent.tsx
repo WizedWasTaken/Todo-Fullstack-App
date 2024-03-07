@@ -8,7 +8,7 @@ import HamburgerMenu from '@/components/non-reusable/header/HamburgerMenu';
  */
 export default function Header() {
   return (
-    <header className='p-5 flex md:flex-col justify-around items-center border-b-2 border-slate-400'>
+    <header className='p-5 flex md:flex-col justify-around items-center border-b-2 border-slate-400 overflow-hidden'>
       <HamburgerMenu />
       <h1>Header</h1>
       <NavBar />
