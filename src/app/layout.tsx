@@ -1,31 +1,30 @@
-import Head from "next/head";
-import type { Metadata } from "next";
-import { inter } from "@/util/fonts";
-import "./styling/globals.scss";
+import type { Metadata } from 'next';
+import { inter } from '@/util/fonts';
+import './styling/globals.scss';
 
 // Imports
-import Header from "@/components/non-reusable/header/HeaderComponent";
-import Footer from "@/components/non-reusable/FooterComponent";
+import Header from '@/components/non-reusable/header/HeaderComponent';
+import Footer from '@/components/non-reusable/FooterComponent';
 
 export const metadata: Metadata = {
-  title: "Blog App",
-  description: "Created by Noah Nielsen",
+  title: {
+    template: '%s | Todo App',
+    default: 'Todo App',
+  },
+  description: 'The official todo app. Made by Noah Nielsen',
+  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
 };
-
 export default function RootLayout({
   children,
-  title = "Forside",
+  title = 'Frontpage',
 }: Readonly<{
   children: React.ReactNode;
   title?: string;
 }>) {
   return (
-    <html lang="en">
-      <Head>
-        <title>{`${title} | Blog Side`}</title>
-      </Head>
-      <body className={(inter.className, "min-h-screen flex flex-col")}>
-        <Header title={title} />
+    <html lang='en'>
+      <body className={(inter.className, 'min-h-screen flex flex-col')}>
+        <Header />
         {children}
         <Footer />
       </body>

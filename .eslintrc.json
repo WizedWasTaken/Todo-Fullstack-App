@@ -1,6 +1,9 @@
 {
   "extends": ["plugin:jsdoc/recommended-typescript", "next/core-web-vitals"],
-  "plugins": [
-    "jsdoc"
-  ]
+  "plugins": ["jsdoc"],
+  "settings": {
+    "jsdoc": {
+      "mode": "typescript"
+    }
+  }
 }
