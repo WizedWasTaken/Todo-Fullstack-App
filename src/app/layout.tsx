@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
-import { inter } from '@/util/fonts';
+import { inter } from '@/lib/utils/fonts';
 import '@/styling/globals.scss';
 
 // Imports

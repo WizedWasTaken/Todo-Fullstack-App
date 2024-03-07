@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { normalMenuItems, loginRegisterMenuItems } from '@/util/menuItems';
+import { normalMenuItems, loginRegisterMenuItems } from '@/lib/utils/menuItems';
 
 /**
  * HTML for the hamburger menu in the nav bar.
