@@ -14,13 +14,13 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className='flex flex-col flex-grow items-center justify-center container mx-auto'>
-      <section className='flex w-full justify-center items-center border-4'>
+      <section className='flex w-full justify-center items-center'>
         <div>
-          <h2 className='text-center text-1xl'>Velkommen til</h2>
-          <h1 className='text-center text-3xl font-semibold antialiased'>
+          <p className='text-center text-1xl'>Velkommen til</p>
+          <h1 className='text-center text-3xl m-4 font-semibold antialiased'>
             Todo App
           </h1>
-          <p className='mt-5'>
+          <p className='text-center'>
             Hjemmesiden der gør planlægning af store software projekter til en
             leg.
           </p>
