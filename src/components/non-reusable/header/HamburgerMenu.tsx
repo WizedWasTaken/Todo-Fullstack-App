@@ -76,17 +76,17 @@ export default function HamburgerMenu() {
       >
         {/* TODO: Hamburger animated icon isn't exactly centered when opened. */}
         <div
-          className={`border-2 border-black w-9 transition-transform duration-300 ${
+          className={`border-2 border-black dark:border-white w-9 transition-transform duration-300 ${
             menuOpen ? 'transform -rotate-45 translate-y-4' : ''
           }`}
         ></div>
         <div
-          className={`border-2 border-black w-9 transition-transform duration-300 ${
+          className={`border-2 border-black dark:border-white w-9 transition-transform duration-300 ${
             menuOpen ? '-translate-x-20' : 'translate-x-0'
           }`}
         ></div>
         <div
-          className={`border-2 border-black w-9 transition-transform duration-300 ${
+          className={`border-2 border-black dark:border-white w-9 transition-transform duration-300 ${
             menuOpen ? 'transform rotate-45 -translate-y-2' : ''
           }`}
         ></div>
@@ -96,7 +96,7 @@ export default function HamburgerMenu() {
       <div
         className={`absolute p-5 left-0 w-full flex top-0 flex-end justify-end transition-translate duration-300 ${
           menuOpen
-            ? 'translate-x-0 bg-black bg-opacity-70'
+            ? 'translate-x-0 dark:bg-white dark:bg-opacity-50 bg-black bg-opacity-70'
             : 'translate-x-full hidden'
         }`}
         ref={hamburgerRef}
@@ -112,7 +112,7 @@ export default function HamburgerMenu() {
               <li key={index}>
                 <Link href={item.path}>
                   <div
-                    className={` bg-gray-200 hover:bg-gray-300 w-24 ml-auto px-2 py-2 rounded-md ${
+                    className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto px-2 py-2 rounded-md ${
                       pathname === item.path
                         ? 'border-r-4 border-r-blue-500'
                         : 'text-primary-500'
@@ -129,7 +129,7 @@ export default function HamburgerMenu() {
               <li key={index}>
                 <Link href={item.path}>
                   <div
-                    className={` bg-gray-200 hover:bg-gray-300 w-24 ml-auto p-2 py-2 rounded-md ${
+                    className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto p-2 py-2 rounded-md ${
                       pathname === item.path
                         ? 'border-r-4 border-r-blue-500'
                         : 'text-primary-500'

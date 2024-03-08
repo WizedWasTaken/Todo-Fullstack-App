@@ -12,7 +12,7 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className='container mx-auto flex justify-between flex-row'>
+    <nav className='container mx-auto justify-between flex-row hidden md:flex'>
       <ul className='w-full hidden justify-between flex-row md:flex mt-5'>
         <ul className='flex justify-center w-full gap-2 flex-row'>
           {normalMenuItems.map((item, index) => {
@@ -20,7 +20,7 @@ export default function NavBar() {
               <li key={index}>
                 <Link
                   href={item.path}
-                  className={` bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
+                  className={`dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
                     pathname === item.path
                       ? 'border-b-4 border-b-blue-500'
                       : 'text-primary-500'
@@ -38,7 +38,7 @@ export default function NavBar() {
               <li key={index}>
                 <Link
                   href={item.path}
-                  className={` bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
+                  className={` dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
                     pathname === item.path
                       ? 'border-b-4 border-b-blue-500'
                       : 'text-primary-500'

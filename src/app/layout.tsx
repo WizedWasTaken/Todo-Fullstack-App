@@ -5,6 +5,8 @@ import { ReactNode } from 'react';
 import { inter } from '@/lib/utils/fonts';
 import '@/styling/globals.scss';
 
+import Theme from '@/lib/theme/theme-provider';
+
 // Imports
 import Header from '@/components/non-reusable/header/HeaderComponent';
 import Footer from '@/components/non-reusable/FooterComponent';
@@ -31,12 +33,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           (inter.className, 'min-h-screen flex flex-col height-questionmark')
         }
       >
-        <Header />
-        {children}
-        <Footer />
-        {/* Vercel important stuff */}
-        <SpeedInsights />
-        <Analytics />
+        <Theme>
+          <Header />
+          {children}
+          <Footer />
+          {/* Vercel important stuff */}
+          <SpeedInsights />
+          <Analytics />
+        </Theme>
       </body>
     </html>
   );
