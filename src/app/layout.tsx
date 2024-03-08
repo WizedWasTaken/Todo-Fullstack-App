@@ -1,3 +1,4 @@
+import { SpeedInsights } from '@vercel/speed-insights/next'; // Analyse the speed of the app
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { inter } from '@/lib/utils/fonts';
@@ -24,7 +25,11 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en'>
-      <body className={(inter.className, 'min-h-screen flex flex-col height-questionmark')}>
+      <body
+        className={
+          (inter.className, 'min-h-screen flex flex-col height-questionmark')
+        }
+      >
         <Header />
         {children}
         <Footer />
