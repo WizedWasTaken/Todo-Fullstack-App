@@ -1,4 +1,5 @@
 import { SpeedInsights } from '@vercel/speed-insights/next'; // Analyse the speed of the app
+import { Analytics } from '@vercel/analytics/react'; // Analytics for the app
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { inter } from '@/lib/utils/fonts';
@@ -32,8 +33,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <Header />
         {children}
-        <SpeedInsights />
         <Footer />
+        {/* Vercel important stuff */}
+        <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
