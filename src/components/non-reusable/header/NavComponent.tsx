@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { normalMenuItems, loginRegisterMenuItems } from '@/util/menuItems';
+import { normalMenuItems, loginRegisterMenuItems } from '@/lib/utils/menuItems';
 
 /**
  * Navigation bar with linkt to different pages, links can be added in the menuItems.ts file
