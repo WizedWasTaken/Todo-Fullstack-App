@@ -32,6 +32,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <Header />
         {children}
+        <SpeedInsights />
         <Footer />
       </body>
     </html>
