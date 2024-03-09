@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { normalMenuItems, loginRegisterMenuItems } from '@/lib/utils/menuItems';
+import { on } from 'events';
 
 /**
  * HTML for the hamburger menu in the nav bar.
@@ -18,6 +19,25 @@ export default function HamburgerMenu() {
   const hamburgerRef = useRef<HTMLDivElement>(null);
   const [mainContainerHeight, setMainContainerHeight] = useState<number>(0);
   const [headerHeight, setHeaderHeight] = useState<number>(0);
+
+  /**
+   * Adds an event listener to the window to listen for resize events
+   * When the window is resized, the height of the main container and the header is recalculated
+   * This is used to set the height of the hamburger menu for all screen sizes
+   */
+  useEffect(() => {
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        setMenuOpen(false);
+      }
+      const mainContainer = document.querySelector('main');
+      const headerContainer = document.querySelector('header');
+      if (mainContainer && headerContainer) {
+        setMainContainerHeight(mainContainer.clientHeight);
+        setHeaderHeight(headerContainer.clientHeight);
+      }
+    });
+  }, []);
 
   /**
    * Sets the height of the main container and the header
