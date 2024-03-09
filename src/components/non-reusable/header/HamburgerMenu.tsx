@@ -54,18 +54,6 @@ export default function HamburgerMenu() {
   }, []);
 
   /**
-   * Disables scrolling when the hamburger menu is open
-   * Enables scrolling when the hamburger menu is closed
-   */
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [menuOpen]);
-
-  /**
    * Sets the height of the hamburger menu to the height of the main container
    * Also sets the margin top to the height of the header
    */

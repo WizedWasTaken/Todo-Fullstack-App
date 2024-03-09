@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     >
       <body
         className={
-          (inter.className, 'min-h-screen flex flex-col height-questionmark')
+          (inter.className, 'min-h-screen flex flex-col overflow-x-hidden')
         }
       >
         <Theme>

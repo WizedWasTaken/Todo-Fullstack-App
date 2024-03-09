@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 // Components
 import { FrontpageCards } from '@/lib/utils/cards';
 import { HoverEffect } from '@/components/ui/card-hover-effect';
+import Reviews from '@/components/non-reusable/frontpageReviews';
 
 export const metadata: Metadata = {
   title: 'Forside | Todo App',
@@ -34,6 +35,10 @@ export default function Home() {
       <section className='flex w-full flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Funktioner</h2>
         <HoverEffect items={FrontpageCards} />
+      </section>
+      <section className='w-screen flex flex-col justify-center items-center'>
+        <h2 className='text-2xl font-semibold'>Hvad vores brugere siger</h2>
+        <Reviews />
       </section>
     </main>
   );
