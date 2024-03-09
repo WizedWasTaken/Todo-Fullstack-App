@@ -6,6 +6,7 @@ export const metadata: Metadata = {
 
 // TODO: Lav et bedre design, gør det mere interaktivt. Overvej om dark mode er vejen frem?
 // White mode var planen fuldt ud, men tror vi kører den med 100% dark mode. Mange af farverne fungere alligevel.
+// Det blev så til en theme toggle knap. Det er en start.
 
 /**
  * Frontpage of the app

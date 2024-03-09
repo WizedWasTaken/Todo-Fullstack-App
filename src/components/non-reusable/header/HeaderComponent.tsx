@@ -11,8 +11,10 @@ export default function Header() {
   return (
     <header className='p-5 w-full flex md:flex-col justify-around items-center border-b-2 border-slate-400 overflow-hidden'>
       <HamburgerMenu />
-      <h1 className='w-full text-center font-bold text-xl'>To-do App</h1>
-      <ThemeToggle />
+      <div className='flex md:flex-row items-center justify-center w-full'>
+        <h1 className='w-full text-center font-bold text-xl'>To-do App</h1>
+        <ThemeToggle />
+      </div>
       <NavBar />
     </header>
   );
