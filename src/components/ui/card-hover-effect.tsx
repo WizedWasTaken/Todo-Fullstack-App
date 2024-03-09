@@ -20,7 +20,7 @@ export const HoverEffect = ({
   return (
     <div
       className={cn(
-        'grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10',
+        'grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  z-0 py-10',
         className
       )}
     >
@@ -72,7 +72,7 @@ export const Card = ({
         className
       )}
     >
-      <div className='relative z-50'>
+      <div className='relative'>
         <div className='p-4'>{children}</div>
       </div>
     </div>

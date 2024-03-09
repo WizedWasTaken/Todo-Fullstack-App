@@ -102,7 +102,7 @@ export default function HamburgerMenu() {
       {/* Hamburger Menu Content */}
       {/* TODO: Hidden for now, as it otherwise creates overflow */}
       <div
-        className={`absolute p-5 left-0 w-full flex top-0 flex-end justify-end transition-translate duration-300 ${
+        className={`absolute p-5 left-0 w-full flex top-0 flex-end justify-end transition-translate duration-300 z-50  ${
           menuOpen
             ? 'translate-x-0 dark:bg-white dark:bg-opacity-50 bg-black bg-opacity-70'
             : 'translate-x-full hidden'
