@@ -38,12 +38,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         }
       >
         <Theme>
-          <Header />
-          {children}
-          <Footer />
           {/* Vercel important stuff */}
           <SpeedInsights />
           <Analytics />
+          <Header />
+          {children}
+          <Footer />
         </Theme>
       </body>
     </html>
