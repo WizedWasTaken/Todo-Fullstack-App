@@ -20,7 +20,7 @@ export const metadata: Metadata = {
  */
 export default function Home() {
   return (
-    <main className='flex flex-col flex-grow items-center justify-center container mx-auto gap-20 mt-20'>
+    <main className='flex flex-col flex-grow items-center justify-center container mx-auto gap-20 my-20'>
       <section className='flex w-full justify-center items-center'>
         <div>
           <p className='text-center text-1xl font-semibold'>Velkommen til</p>
