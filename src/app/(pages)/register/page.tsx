@@ -7,7 +7,7 @@ import {
   IconBrandGithub,
   IconBrandGoogle,
   IconBrandOnlyfans,
-  IconBrandFacebook,
+  IconBrandDiscord,
 } from '@tabler/icons-react';
 
 /**
@@ -34,9 +34,9 @@ export default function RegisterPage() {
       ),
     },
     {
-      name: 'Facebook',
+      name: 'Discord',
       icon: (
-        <IconBrandFacebook className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
+        <IconBrandDiscord className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
       ),
     },
   ];
@@ -89,11 +89,11 @@ export default function RegisterPage() {
           />
         </LabelInputContainer>
         <LabelInputContainer className='mb-8'>
-          <Label htmlFor='twitterpassword'>Gentag kodeord</Label>
+          <Label htmlFor='repeatpassword'>Gentag kodeord</Label>
           <Input
-            id='twitterpassword'
+            id='repeatpassword'
             placeholder='••••••••'
-            type='twitterpassword'
+            type='password'
           />
         </LabelInputContainer>
 

@@ -41,11 +41,6 @@ export default function Home() {
         <h2 className='text-2xl font-semibold'>Hvad vores brugere siger</h2>
         <Reviews />
       </section>
-      {/* TODO: Find på flere ting at smide på forsiden */}
-      <section className='flex w-full flex-col justify-center items-center'>
-        <h2 className='text-2xl font-semibold'>Ofte stillede spørgsmål</h2>
-        <p className=''>Coming Soon!</p>
-      </section>
       <section className='flex w-full flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Priser</h2>
         <PriceCards />
