@@ -2,6 +2,10 @@
 
 import { useTheme } from 'next-themes';
 
+// Const instead of function for none hydration error. This works for some reason 💀
+/**
+ * @returns HTML for the theme toggle button
+ */
 const ThemeToggle = () => {
   const { theme, setTheme } = useTheme();
 
