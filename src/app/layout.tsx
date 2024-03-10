@@ -1,3 +1,4 @@
+// Everything neccecary for the layout of the app
 import { SpeedInsights } from '@vercel/speed-insights/next'; // Analyse the speed of the app
 import { Analytics } from '@vercel/analytics/react'; // Analytics for the app
 import type { Metadata } from 'next';
@@ -5,11 +6,15 @@ import { ReactNode } from 'react';
 import { inter } from '@/lib/utils/fonts';
 import '@/styling/globals.scss';
 
+// Theme
 import Theme from '@/lib/theme/theme-provider';
 
 // Imports
 import Header from '@/components/non-reusable/header/HeaderComponent';
 import Footer from '@/components/non-reusable/FooterComponent';
+
+// Auth
+import { Providers } from '@/components/non-reusable/authProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -38,12 +43,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         }
       >
         <Theme>
-          {/* Vercel important stuff */}
           <SpeedInsights />
           <Analytics />
-          <Header />
-          {children}
-          <Footer />
+          <Providers>
+            <Header />
+            {children}
+            <Footer />
+          </Providers>
         </Theme>
       </body>
     </html>
