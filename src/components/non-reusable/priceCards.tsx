@@ -124,7 +124,7 @@ const PricingCard = ({
               : 'Custom'}
           </h3>
           <span className='flex flex-col justify-end text-sm mb-1'>
-            {yearlyPrice && isYearly ? '/year' : monthlyPrice ? '/month' : null}
+            {yearlyPrice && isYearly ? '/år' : monthlyPrice ? '/måned' : null}
           </span>
         </div>
         <CardDescription className='pt-1.5 h-12'>{description}</CardDescription>
