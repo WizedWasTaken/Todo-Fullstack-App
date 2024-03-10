@@ -46,10 +46,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <SpeedInsights />
           <Analytics />
           <Providers>
-            <Header />
-            {children}
+          <Header />
+          {children}
             <Footer />
-          </Providers>
+            </Providers>
         </Theme>
       </body>
     </html>

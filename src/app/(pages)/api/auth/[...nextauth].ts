@@ -2,7 +2,7 @@ import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 
-export const authOptions = {
+export default NextAuth({
   // Configure one or more authentication providers
   providers: [
     GithubProvider({
@@ -14,6 +14,4 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET || '',
     }),
   ],
-};
-
-export default NextAuth(authOptions);
+});
