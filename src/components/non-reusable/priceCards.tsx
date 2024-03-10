@@ -83,6 +83,7 @@ const PricingCard = ({
       `w-72 flex flex-col justify-between py-1 ${
         popular ? 'border-rose-400' : 'border-zinc-700'
       } mx-auto sm:mx-0`,
+      //   TODO: Make the background shine in white mode when exclusive
       {
         'animate-background-shine bg-white dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] transition-colors':
           exclusive,
@@ -208,7 +209,7 @@ export default function PriceCards() {
     },
   ];
   return (
-    <div className=''>
+    <div className='py-10'>
       <PricingSwitch onSwitch={togglePricingPeriod} />
       <section className='flex flex-col sm:flex-row sm:flex-wrap justify-center gap-8 mt-8'>
         {plans.map((plan) => {
