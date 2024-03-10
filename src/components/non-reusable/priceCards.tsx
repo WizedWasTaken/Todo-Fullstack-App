@@ -140,7 +140,6 @@ const PricingCard = ({
         ))}
       </CardContent>
     </div>
-    {/* TODO: Make the buttons do something */}
     <CardFooter className='mt-2'>
       <Link
         href={actionLabel === 'Opret Konto' ? '/register' : '/contact'}
