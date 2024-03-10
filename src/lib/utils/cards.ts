@@ -17,7 +17,7 @@ export const FrontpageCards = [
     description: 'Se statistikker over opgaver og projekter',
   },
   {
-    title: 'Opret opgaver',
+    title: 'Opret opgave',
     description: 'Opret opgaver og tildel dem til dig selv eller andre',
   },
   {

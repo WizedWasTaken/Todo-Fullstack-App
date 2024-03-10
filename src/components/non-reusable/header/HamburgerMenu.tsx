@@ -58,9 +58,7 @@ export default function HamburgerMenu() {
    * Also sets the margin top to the height of the header
    */
   useEffect(() => {
-    console.log('hamburgerRef.current', hamburgerRef.current);
     if (hamburgerRef.current) {
-      console.log(mainContainerHeight);
       hamburgerRef.current.style.height = `${mainContainerHeight}px`;
       hamburgerRef.current.style.marginTop = `${headerHeight + 2}px`;
     }

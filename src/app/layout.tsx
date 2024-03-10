@@ -29,7 +29,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang='en'
-      suppressHydrationWarning={true}
+      suppressHydrationWarning
+      className='dark'
     >
       <body
         className={

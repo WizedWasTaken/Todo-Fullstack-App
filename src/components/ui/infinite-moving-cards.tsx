@@ -23,6 +23,7 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
+  // TODO: Find a way to make this lightmode aswell.
   useEffect(() => {
     addAnimation();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -86,7 +87,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          ' flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap',
+          'flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap',
           start && 'animate-scroll ',
           pauseOnHover && 'hover:[animation-play-state:paused]'
         )}
