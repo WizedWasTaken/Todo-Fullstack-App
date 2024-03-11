@@ -13,8 +13,8 @@ export default function NavBar() {
 
   return (
     <nav className='container mx-auto justify-between flex-row hidden md:flex'>
-      <ul className='w-full hidden justify-between flex-row md:flex mt-5'>
-        <ul className='flex justify-center w-full gap-2 flex-row'>
+      <ul className='w-full hidden justify-center flex-row md:flex mt-5 relative'>
+        <ul className='flex justify-center gap-2 flex-row absolute'>
           {normalMenuItems.map((item, index) => {
             return (
               <li key={index}>
@@ -32,7 +32,7 @@ export default function NavBar() {
             );
           })}
         </ul>
-        <ul className='flex gap-5'>
+        <ul className='flex gap-5 justify-end items-end w-full'>
           {loginRegisterMenuItems.map((item, index) => {
             return (
               <li key={index}>

@@ -2,9 +2,10 @@
 'use client';
 
 // importing necessary functions
-import { useSession, signIn, signOut } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function About() {
   // extracting data from usesession as session
@@ -44,18 +45,13 @@ export default function About() {
   return (
     <div className='w-full h-screen flex flex-col justify-center items-center'>
       <p className='text-2xl mb-2'>Not Signed In</p>
-      <button
-        className='bg-blue-600 py-2 px-6 rounded-md mb-2'
-        onClick={() => signIn('google')}
+      <p>Brug /register for at logge ind med vores OAuth muligheder</p>
+      <Link
+        href='/register'
+        className='rounded-md w-25 bg-blue-500 p-2 mt-5'
       >
-        Sign in with google
-      </button>
-      <button
-        className='bg-none border-gray-300 border py-2 px-6 rounded-md mb-2'
-        onClick={() => signIn('github')}
-      >
-        Sign in with github
-      </button>
+        Gå til siden
+      </Link>
     </div>
   );
 }
