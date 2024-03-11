@@ -122,8 +122,6 @@ export default function RegisterPage() {
             Eller opret en konto med
           </p>
           <div className='flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0'>
-            {/* TODO: GitHub might have a bug with impossible log in, do intensive testing. */}
-            {/* Seems to work fine on mobile... */}
             {logInOptions.map((option, index) => (
               <button
                 key={index}

@@ -12,7 +12,7 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className='container mx-auto justify-between flex-row hidden md:flex'>
+    <nav className='justify-between w-full flex-row hidden md:flex'>
       <ul className='w-full hidden justify-center flex-row md:flex mt-5 relative'>
         <ul className='flex justify-center gap-2 flex-row absolute'>
           {normalMenuItems.map((item, index) => {
@@ -32,7 +32,7 @@ export default function NavBar() {
             );
           })}
         </ul>
-        <ul className='flex gap-5 justify-end items-end w-full'>
+        <ul className='flex gap-2 justify-end items-end w-full'>
           {loginRegisterMenuItems.map((item, index) => {
             return (
               <li key={index}>

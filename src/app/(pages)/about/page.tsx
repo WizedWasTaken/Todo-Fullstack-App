@@ -6,12 +6,21 @@ import { useSession, signOut } from 'next-auth/react';
 
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
+/**
+ *
+ * @returns HTML for the about page
+ */
 export default function About() {
   // extracting data from usesession as session
   const { data: session } = useSession();
 
-  console.log(session);
+  useEffect(() => {
+    if (!session) {
+      console.log('No session');
+    }
+  }, [session]);
 
   // checking if sessions exists
   if (session) {
