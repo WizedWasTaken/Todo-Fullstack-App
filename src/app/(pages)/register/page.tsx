@@ -69,7 +69,7 @@ export default function RegisterPage() {
             <Label htmlFor='firstname'>Fornavn</Label>
             <Input
               id='firstname'
-              placeholder='Joe'
+              placeholder='John'
               type='text'
             />
           </LabelInputContainer>
@@ -77,7 +77,7 @@ export default function RegisterPage() {
             <Label htmlFor='lastname'>Efternavn</Label>
             <Input
               id='lastname'
-              placeholder='Mama'
+              placeholder='Doe'
               type='text'
             />
           </LabelInputContainer>
@@ -91,7 +91,7 @@ export default function RegisterPage() {
           />
         </LabelInputContainer>
         <LabelInputContainer className='mb-4'>
-          <Label htmlFor='password'>Kodeord</Label>
+          <Label htmlFor='password'>Adgangskode</Label>
           <Input
             id='password'
             placeholder='••••••••'
@@ -99,7 +99,7 @@ export default function RegisterPage() {
           />
         </LabelInputContainer>
         <LabelInputContainer className='mb-8'>
-          <Label htmlFor='repeatpassword'>Gentag kodeord</Label>
+          <Label htmlFor='repeatpassword'>Gentag adgangskode</Label>
           <Input
             id='repeatpassword'
             placeholder='••••••••'
@@ -167,17 +167,4 @@ const LabelInputContainer = ({
       {children}
     </div>
   );
-};
-
-const LogInButtons = () => {
-  <button
-    className=' relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
-    type='submit'
-  >
-    <IconBrandOnlyfans className='h-4 w-4 text-neutral-800 dark:text-neutral-300' />
-    <span className='text-neutral-700 dark:text-neutral-300 text-sm'>
-      OnlyFans
-    </span>
-    <BottomGradient />
-  </button>;
 };
