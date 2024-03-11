@@ -1,11 +1,37 @@
-/**
- * 
- * @returns HTML for the Plan page
- */
-export default function Plan() {
+'use client';
+import { useEffect, useState } from 'react';
+
+function FetchDataComponent() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Call the API endpoint
+    fetch('/api/reviews/getAllUsers')
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming the API returns an object with a 'users' field
+        setUsers(data.users);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch data:', error);
+      });
+  }, []);
+
   return (
-    <main className='flex flex-grow items-center justify-center'>
-      <h1>Plan</h1>
-    </main>
+    <div>
+      {users.length > 0 ? (
+        <ul>
+          {users.map((user: { name: string; email: string }, index: number) => (
+            <li key={index}>
+              {user.name} - {user.email}
+            </li> // Assuming users have 'name' and 'email'
+          ))}
+        </ul>
+      ) : (
+        <div>No users found</div>
+      )}
+    </div>
   );
 }
+
+export default FetchDataComponent;
