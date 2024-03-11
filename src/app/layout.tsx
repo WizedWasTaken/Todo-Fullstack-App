@@ -14,7 +14,7 @@ import Header from '@/components/non-reusable/header/HeaderComponent';
 import Footer from '@/components/non-reusable/FooterComponent';
 
 // Auth
-import { Providers } from '@/components/non-reusable/authProvider';
+import SessionWrapper from '@/components/non-reusable/authProvider';
 
 export const metadata: Metadata = {
   title: {
@@ -32,26 +32,26 @@ export const metadata: Metadata = {
  */
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html
-      lang='en'
-      suppressHydrationWarning
-      className='dark'
-    >
-      <body
-        className={
-          (inter.className, 'min-h-screen flex flex-col overflow-x-hidden')
-        }
+    <SessionWrapper>
+      <html
+        lang='en'
+        suppressHydrationWarning
+        className='dark'
       >
-        <Theme>
-          <SpeedInsights />
-          <Analytics />
-          <Providers>
-          <Header />
-          {children}
+        <body
+          className={
+            (inter.className, 'min-h-screen flex flex-col overflow-x-hidden')
+          }
+        >
+          <Theme>
+            <SpeedInsights />
+            <Analytics />
+            <Header />
+            {children}
             <Footer />
-            </Providers>
-        </Theme>
-      </body>
-    </html>
+          </Theme>
+        </body>
+      </html>
+    </SessionWrapper>
   );
 }
