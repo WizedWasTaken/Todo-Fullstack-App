@@ -19,6 +19,7 @@ export default NextAuth({
     //   clientSecret: process.env.DISCORD_SECRET as string,
     // }),
   ],
+  secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
       return true;
@@ -26,19 +27,27 @@ export default NextAuth({
     async redirect({ url, baseUrl }) {
       return baseUrl; // Redirect to the home page or a custom page
     },
-    async session({session, token, user}) {
+    async session({ session, token, user }) {
       return session;
     },
-    async jwt({token, user, account, profile, isNewUser }) {
+    async jwt({ token, user, account, profile, isNewUser }) {
       return token;
-    }
-  }
+    },
+  },
+  debug: true,
 });
 
 if (process.env.NODE_ENV !== 'production') {
-  const missingVars = ['GITHUB_ID', 'GITHUB_SECRET', 'GOOGLE_ID', 'GOOGLE_SECRET', 'DISCORD_ID', 'DISCORD_SECRET', 'NEXTAUTH_URL'].filter(key => !process.env[key]);
+  const missingVars = [
+    'GITHUB_ID',
+    'GITHUB_SECRET',
+    'GOOGLE_ID',
+    'GOOGLE_SECRET',
+    'DISCORD_ID',
+    'DISCORD_SECRET',
+    'NEXTAUTH_URL',
+  ].filter((key) => !process.env[key]);
   if (missingVars.length > 0) {
     console.warn('Missing environment variables:', missingVars.join(', '));
   }
 }
-
