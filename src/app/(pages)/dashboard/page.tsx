@@ -1,16 +1,38 @@
-import { useLoaderData } from 'next/app';
+'use client';
 
-export default function Dashboard() {
-  const { users } = useData();
+import { useEffect, useState } from 'react';
+
+function FetchDataComponent() {
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    // Call the API endpoint
+    fetch('/api/reviews/getAllUsers')
+      .then((response) => response.json())
+      .then((data) => {
+        // Assuming the API returns an object with a 'users' field
+        setUsers(data.users);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch data:', error);
+      });
+  }, []);
 
   return (
-    <main className='flex flex-grow items-center justify-center'>
-      <h1>Dashboard</h1>
-      <ul>
-        {users.map((user, index) => (
-          <li key={index}>{user.name}</li> // Adapt according to your data structure
-        ))}
-      </ul>
-    </main>
+    <div>
+      {users.length > 0 ? (
+        <ul>
+          {users.map((user, index) => (
+            <li key={index}>
+              {user.name} - {user.email}
+            </li> // Assuming users have 'name' and 'email'
+          ))}
+        </ul>
+      ) : (
+        <div>No users found</div>
+      )}
+    </div>
   );
 }
+
+export default FetchDataComponent;
