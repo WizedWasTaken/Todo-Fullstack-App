@@ -20,4 +20,12 @@ export default NextAuth({
       clientSecret: process.env.DISCORD_SECRET as string,
     }),
   ],
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }) {
+      return true;
+    },
+    async redirect({ url, baseUrl }) {
+      return baseUrl; // Redirect to the home page or a custom page
+    },
+  },
 });
