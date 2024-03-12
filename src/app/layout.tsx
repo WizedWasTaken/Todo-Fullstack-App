@@ -24,6 +24,8 @@ export const metadata: Metadata = {
   description: 'The official todo app. Made by Noah Nielsen',
 };
 
+// TODO: Find a way to make the app router work with server calls, so that the app can be server side rendered
+
 /**
  * Layout for the app
  * @param param0 Children to be rendered
