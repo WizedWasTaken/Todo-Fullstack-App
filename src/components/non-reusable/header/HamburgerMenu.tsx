@@ -3,7 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { normalMenuItems, loginRegisterMenuItems } from '@/lib/utils/menuItems';
+import {
+  normalMenuItems,
+  loginRegisterMenuItems,
+} from '@/lib/utils/design/menuItems';
 import { on } from 'events';
 
 /**

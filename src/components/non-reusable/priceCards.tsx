@@ -1,6 +1,6 @@
 'use client';
 
-import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tabs, TabsList, TabsTrigger } from '@/components/ui-library/tabs';
 import {
   Card,
   CardContent,
@@ -8,11 +8,11 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card';
+} from '@/components/ui-library/card';
 import { CheckCircle2 } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui-library/button';
 import React, { useState } from 'react';
-import { cn } from '@/lib/utils/cn';
+import { cn } from '@/lib/utils/design/cn';
 import Link from 'next/link';
 
 type PricingSwitchProps = {
