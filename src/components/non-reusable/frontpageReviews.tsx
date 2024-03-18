@@ -1,4 +1,4 @@
-import { InfiniteMovingCards } from '../ui/infinite-moving-cards';
+import { InfiniteMovingCards } from '../ui-library/infinite-moving-cards';
 
 /**
  *

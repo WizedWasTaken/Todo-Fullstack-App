@@ -26,18 +26,21 @@ export default function RegisterPage() {
       icon: (
         <IconBrandGoogle className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
       ),
+      id: 'google',
     },
     {
       name: "GitHub",
       icon: (
         <IconBrandGithub className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
       ),
+      id: 'github',
     },
     {
       name: "Facebook",
       icon: (
         <IconBrandFacebook className="h-4 w-4 text-neutral-800 dark:text-neutral-300" />
       ),
+      id: 'discord',
     },
   ];
 

@@ -1,18 +1,14 @@
 import { Metadata } from 'next';
 
 // Components
-import { FrontpageCards } from '@/lib/utils/cards';
+import { FrontpageCards } from '@/lib/utils/design/cards';
 import PriceCards from '@/components/non-reusable/priceCards';
-import { HoverEffect } from '@/components/ui/card-hover-effect';
+import { HoverEffect } from '@/components/ui-library/card-hover-effect';
 import Reviews from '@/components/non-reusable/frontpageReviews';
 
 export const metadata: Metadata = {
   title: 'Forside | Todo App',
 };
-
-// TODO: Lav et bedre design, gør det mere interaktivt. Overvej om dark mode er vejen frem?
-// White mode var planen fuldt ud, men tror vi kører den med 100% dark mode. Mange af farverne fungere alligevel.
-// Det blev så til en theme toggle knap. Det er en start.
 
 /**
  * Frontpage of the app
@@ -40,11 +36,6 @@ export default function Home() {
       <section className='w-screen flex flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Hvad vores brugere siger</h2>
         <Reviews />
-      </section>
-      {/* TODO: Find på flere ting at smide på forsiden */}
-      <section className='flex w-full flex-col justify-center items-center'>
-        <h2 className='text-2xl font-semibold'>Ofte stillede spørgsmål</h2>
-        <p className=''>Coming Soon!</p>
       </section>
       <section className='flex w-full flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Priser</h2>

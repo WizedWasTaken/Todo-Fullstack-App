@@ -2,7 +2,10 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { normalMenuItems, loginRegisterMenuItems } from '@/lib/utils/menuItems';
+import {
+  normalMenuItems,
+  loginRegisterMenuItems,
+} from '@/lib/utils/design/menuItems';
 
 /**
  * Navigation bar with linkt to different pages, links can be added in the menuItems.ts file
@@ -12,9 +15,9 @@ export default function NavBar() {
   const pathname = usePathname();
 
   return (
-    <nav className='container mx-auto justify-between flex-row hidden md:flex'>
-      <ul className='w-full hidden justify-between flex-row md:flex mt-5'>
-        <ul className='flex justify-center w-full gap-2 flex-row'>
+    <nav className='justify-between w-full flex-row hidden md:flex'>
+      <ul className='w-full hidden justify-center flex-row md:flex mt-5 relative'>
+        <ul className='flex justify-center gap-2 flex-row absolute'>
           {normalMenuItems.map((item, index) => {
             return (
               <li key={index}>
@@ -32,7 +35,7 @@ export default function NavBar() {
             );
           })}
         </ul>
-        <ul className='flex gap-5'>
+        <ul className='flex gap-2 justify-end items-end w-full'>
           {loginRegisterMenuItems.map((item, index) => {
             return (
               <li key={index}>
