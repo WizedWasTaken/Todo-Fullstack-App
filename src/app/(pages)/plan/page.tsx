@@ -1,7 +1,7 @@
 export default function Plan() {
   return (
-    <div>
+    <main className='flex flex-grow items-center justify-center'>
       <h1>Plan</h1>
-    </div>
+    </main>
   );
 }

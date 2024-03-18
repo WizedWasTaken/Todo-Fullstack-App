@@ -2,8 +2,8 @@ import UserList from '@/components/admin/UsersList';
 
 export default function Dashboard() {
   return (
-    <div>
+    <main className='flex flex-grow'>
       <UserList />
-    </div>
+    </main>
   );
 }

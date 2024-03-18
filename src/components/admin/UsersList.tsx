@@ -4,7 +4,6 @@ import React, { useEffect, useState } from 'react';
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
@@ -13,44 +12,62 @@ import {
 } from '@/components/ui-library/table';
 import { UserData } from '@/lib/types';
 
+// TODO: Add table splitting, pagination, and sorting features for potential large datasets
+// TODO: Responsive table for mobile devices
 export default function UsersList() {
   const [users, setUsers] = useState<UserData[]>([]);
 
   useEffect(() => {
     async function fetchUsers() {
-      const response = await fetch('/api/admin/users');
-      const data: UserData[] = await response.json();
-      setUsers(data);
+      try {
+        const response = await fetch('/api/admin/users');
+        const data: UserData[] = await response.json();
+        setUsers(data);
+      } catch (error) {
+        return;
+      }
     }
 
     fetchUsers();
   }, []);
 
   return (
-    <Table>
-      <TableHeader>
-        <TableRow>
-          <TableHead>ID</TableHead>
-          <TableHead>Name</TableHead>
-          <TableHead>Email</TableHead>
-          <TableHead>Provider</TableHead>
-        </TableRow>
-      </TableHeader>
-      <TableBody>
-        {users.map((user) => (
-          <TableRow key={user._id}>
-            <TableCell className='font-medium'>{user._id}</TableCell>
-            <TableCell>{user.name}</TableCell>
-            <TableCell>{user.email}</TableCell>
-            <TableCell>{user.provider}</TableCell>
-          </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={4}>Total users: {users.length}</TableCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+    <>
+      {users && users.length === 0 && <p>No users found</p>}
+      {users && users.length > 0 && (
+        <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>ID</TableHead>
+              <TableHead>Name</TableHead>
+              <TableHead>Email</TableHead>
+              <TableHead>Provider</TableHead>
+              <TableHead>Provider ID</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {users.map((user: UserData) => (
+              <TableRow key={user._id}>
+                <TableCell className='font-medium'>{user._id}</TableCell>
+                <TableCell>{user.name}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell>{user.provider}</TableCell>
+                <TableCell>{user.providerId}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter>
+            <TableRow>
+              <TableCell
+                colSpan={5}
+                className='text-center'
+              >
+                Total users: {users.length}
+              </TableCell>
+            </TableRow>
+          </TableFooter>
+        </Table>
+      )}
+    </>
   );
 }
