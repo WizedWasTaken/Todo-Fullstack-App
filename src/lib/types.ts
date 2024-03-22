@@ -6,3 +6,11 @@ export interface UserData {
   provider: string;
   providerId: string;
 }
+
+export interface ReviewData {
+  _id: number;
+  userId: number;
+  rating: number;
+  review: string;
+  createdAt: Date;
+}
