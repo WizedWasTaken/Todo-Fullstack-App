@@ -4,6 +4,11 @@ const userSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   name: { type: String },
   image: { type: String },
+  group: {
+    type: [String],
+    default: 'free',
+    enum: ['free', 'pro', 'enterprise', 'admin', 'allPerms', 'friend'],
+  },
   provider: { type: String },
   providerId: { type: String },
 });

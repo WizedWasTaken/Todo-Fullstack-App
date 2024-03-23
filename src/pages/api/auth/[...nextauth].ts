@@ -29,12 +29,15 @@ export default NextAuth({
   ],
   callbacks: {
     async session({ session, user }) {
+      console.log('session', session);
       return session;
     },
     async jwt({ token, user }) {
       return token;
     },
     async signIn({ user, account }) {
+      console.log('user', user);
+      console.log('account', account);
       mongoose.connect(process.env.MONGODB_URI as string);
 
       const existingUser = await User.findOne({ email: user.email }).exec();
