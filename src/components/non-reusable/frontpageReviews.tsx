@@ -1,16 +1,31 @@
+'use client';
+
+import { useEffect, useState } from 'react';
 import { InfiniteMovingCards } from '../ui-library/infinite-moving-cards';
+import { ReviewData } from '@/lib/types';
 
 /**
  *
  * @returns HTML and logic for the reviews component
  */
 export default function reviews() {
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    const fetchReviewsData = async () => {
+      const reviewsData = await fetchReviews();
+      setReviews(reviewsData);
+    };
+
+    fetchReviewsData();
+  }, []);
+
   return (
     <InfiniteMovingCards
       direction='right'
-      speed='normal'
+      speed='fast'
       pauseOnHover={false}
-      items={GetReviews()}
+      items={reviews}
       className='py-10 w-full overflow-hidden'
     />
   );
@@ -20,22 +35,18 @@ export default function reviews() {
  *
  * @returns an array of reviews
  */
-function GetReviews() {
-  return [
-    {
-      quote: 'Bedre en trello!',
-      name: 'Joe Mama',
-      title: 'CEO (Chief Executive Officer)',
-    },
-    {
-      quote: 'Amazing app!',
-      name: 'John Doe',
-      title: 'Software Engineer',
-    },
-    {
-      quote: 'Highly recommended!',
-      name: 'Jane Smith',
-      title: 'Product Manager',
-    },
-  ];
+async function fetchReviews() {
+  try {
+    const response = await fetch('/api/reviews/getReviews');
+    const data = await response.json();
+    console.log('data', data);
+    // TODO: Uses UserID currently. Fix this to use the actual name of the user
+    return data.map((review: ReviewData) => ({
+      title: 'Kunde',
+      quote: review.review,
+      name: review.userId,
+    }));
+  } catch (error) {
+    return;
+  }
 }

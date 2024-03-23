@@ -18,6 +18,7 @@ function getAllReviews(
   }
 }
 
+// TAR ALLE REVIEWS FRA DATABASEN
 async function getReviews(
   req: NextApiRequest,
   res: NextApiResponse<ReviewData[] | { message: string }>
