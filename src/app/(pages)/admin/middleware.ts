@@ -26,21 +26,8 @@ const secret = process.env.SECRET;
 // }
 
 export default function middleware(req: NextRequest) {
-  console.log('middleware');
-  const { pathname } = req.nextUrl;
-
-  // Skip middleware for non-page requests like static files
-  if (pathname.includes('/_next')) {
-    return NextResponse.next();
-  }
-
-  // Example condition: Check for a custom header
-  const customHeader = req.headers.get('x-custom-header');
-  if (!customHeader) {
-    // Redirect to a sign-in page if the custom header is missing
-    return NextResponse.redirect(new URL('/sign-in', req.url));
-  }
-
-  // Continue with the request if the header is present
+  console.log('Middleware is running');
+  // Perform a simple action, like logging or redirecting
+  // return NextResponse.redirect('/some-path');
   return NextResponse.next();
 }
