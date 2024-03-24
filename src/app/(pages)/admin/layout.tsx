@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import SideNav from '@/components/admin/SideNav';
+import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
   title: {
