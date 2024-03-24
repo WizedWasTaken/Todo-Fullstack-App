@@ -4,6 +4,7 @@ export interface UserData {
   email: string;
   image: string;
   provider: string;
+  group: string[];
   providerId: string;
 }
 

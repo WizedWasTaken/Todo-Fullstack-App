@@ -1,7 +1,7 @@
-export default function Plan() {
-  return (
-    <main className='flex flex-grow items-center justify-center'>
-      <h1>Plan</h1>
-    </main>
-  );
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/pages/api/auth/[...nextauth]';
+
+export default async function Page() {
+  const session = await getServerSession(authOptions);
+  return <pre>{JSON.stringify(session, null, 2)}</pre>;
 }

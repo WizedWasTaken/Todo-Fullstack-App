@@ -1,21 +1,20 @@
-import { getSession } from 'next-auth/react';
-import { NextResponse, type NextRequest } from 'next/server';
+// app/middleware.js or app/admin/middleware.js for scoped middleware
+import { NextResponse } from 'next/server';
+import { getToken } from 'next-auth/jwt';
 
-export function middleware(request: NextRequest) {
-  const session = getSession();
-  console.log('session', session);
-  // Admin
-  if (request.nextUrl.pathname.startsWith('/admin')) {
-    if (!session) {
-      return NextResponse.redirect(new URL('/auth/signin', request.url));
+export async function middleware(req: any) {
+  const secret = process.env.NEXTAUTH_SECRET;
+  const token: any = await getToken({ req, secret });
+
+  // Admin routes
+  const isAdminRoute = req.nextUrl.pathname.startsWith('/admin');
+  if (isAdminRoute) {
+    if (!token || !(token as any).groups.includes('admin')) {
+      const url = req.nextUrl.clone();
+      url.pathname = '/login';
+      return NextResponse.redirect(url);
     }
-
-    // @ts-ignore
-    // console.log('Signed in' + session.user.email);
   }
-  //   return NextResponse.redirect(new URL('/', request.url));
-}
 
-export const config = {
-  matcher: '/admin/dashboard',
-};
+  return NextResponse.next();
+}

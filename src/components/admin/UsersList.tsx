@@ -22,6 +22,7 @@ export default function UsersList() {
       try {
         const response = await fetch('/api/admin/users');
         const data: UserData[] = await response.json();
+        console.log(data);
         setUsers(data);
       } catch (error) {
         return;
@@ -42,7 +43,7 @@ export default function UsersList() {
               <TableHead>Name</TableHead>
               <TableHead>Email</TableHead>
               <TableHead>Provider</TableHead>
-              <TableHead>Provider ID</TableHead>
+              <TableHead>Groups</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
@@ -52,7 +53,7 @@ export default function UsersList() {
                 <TableCell>{user.name}</TableCell>
                 <TableCell>{user.email}</TableCell>
                 <TableCell>{user.provider}</TableCell>
-                <TableCell>{user.providerId}</TableCell>
+                <TableCell>{user.group.join(' ')}</TableCell>
               </TableRow>
             ))}
           </TableBody>
