@@ -29,26 +29,26 @@ export default NextAuth({
   ],
   callbacks: {
     async session({ session, user }) {
-      console.log('session', session);
+      console.log('From Auth!: Session', session);
+      // @ts-ignore
+      session.user.groups = await getUserGroups(session.user.email);
+      console.log('From Auth 2!: Session', session);
       return session;
     },
     async jwt({ token, user }) {
       return token;
     },
     async signIn({ user, account }) {
-      console.log('user', user);
-      console.log('account', account);
       mongoose.connect(process.env.MONGODB_URI as string);
 
       const existingUser = await User.findOne({ email: user.email }).exec();
 
-      console.log('existingUser', existingUser);
       if (!existingUser) {
-        console.log('creating user');
         await User.create({
           email: user.email,
           name: user.name,
           image: user.image,
+          group: ['free'],
           provider: account?.provider,
           providerId: account?.providerAccountId,
         });
@@ -63,3 +63,8 @@ export default NextAuth({
 
   debug: true,
 });
+
+async function getUserGroups(userEmail: string) {
+  const user = await User.findOne({ email: userEmail }).exec();
+  return user?.group || [];
+}
