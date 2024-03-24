@@ -39,3 +39,25 @@ export const loginRegisterMenuItems = [
     path: '/register',
   },
 ];
+
+/**
+ * Admin navigation list items for the nav bar
+ */
+export const adminMenuItems = [
+  {
+    name: 'Dashboard',
+    path: '/admin/dashboard',
+  },
+  {
+    name: 'Users',
+    path: '/admin/users',
+  },
+  {
+    name: 'Reviews',
+    path: '/admin/reviews',
+  },
+  {
+    name: 'Settings',
+    path: '/admin/settings',
+  },
+];
