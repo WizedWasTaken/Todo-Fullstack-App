@@ -26,7 +26,7 @@ export default function About() {
   if (session) {
     // rendering components for logged in users
     return (
-      <div className='w-full h-screen flex flex-col justify-center items-center'>
+      <div className='flex-grow flex flex-col justify-center items-center'>
         <div className='w-44 h-44 relative mb-4'>
           <Image
             src={session.user?.image as string}
@@ -52,7 +52,7 @@ export default function About() {
 
   // rendering components for not logged in users
   return (
-    <div className='w-full h-screen flex flex-col justify-center items-center'>
+    <div className='flex-grow flex flex-col justify-center items-center'>
       <p className='text-2xl mb-2'>Not Signed In</p>
       <p>Brug /register for at logge ind med vores OAuth muligheder</p>
       <Link

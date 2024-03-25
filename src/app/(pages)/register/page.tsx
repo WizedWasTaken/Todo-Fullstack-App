@@ -20,6 +20,56 @@ export default function RegisterPage() {
     console.log('Implement login logic here');
   };
 
+  // Find a way to alert other than using alert
+  const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+    for (let [key, value] of formData.entries() as any) {
+      if (!value) {
+        alert('Please fill out all fields');
+        return;
+      }
+    }
+
+    const result = await fetch('/api/auth/register', {
+      method: 'POST',
+      body: JSON.stringify({
+        email: formData.get('email'),
+        password: formData.get('password'),
+        repeatPassword: formData.get('repeatPassword'),
+        firstName: formData.get('firstname'),
+        lastName: formData.get('lastname'),
+      }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(async (res) => {
+        if (res.ok) {
+          alert('User created successfully');
+
+          console.log(formData.get('email'), formData.get('password'));
+          const signInResult = await signIn('credentials', {
+            redirect: false, // Handle redirection manually
+            email: formData.get('email'),
+            password: formData.get('password'),
+          });
+
+          if (signInResult?.error) {
+            alert(`Login failed: ${signInResult.error}`);
+          } else {
+            window.location.href = '/'; // Or your desired callback URL
+          }
+        } else {
+          alert('An error occurred');
+        }
+      })
+      .catch(() => {
+        alert('An error occurred');
+      });
+  };
+
   const logInOptions = [
     {
       name: 'Google',
@@ -55,12 +105,13 @@ export default function RegisterPage() {
 
       <form
         className='my-8'
-        onSubmit={handleSubmit}
+        onSubmit={registerUser}
       >
         <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
           <LabelInputContainer>
             <Label htmlFor='firstname'>Fornavn</Label>
             <Input
+              name='firstname'
               id='firstname'
               placeholder='John'
               type='text'
@@ -69,6 +120,7 @@ export default function RegisterPage() {
           <LabelInputContainer>
             <Label htmlFor='lastname'>Efternavn</Label>
             <Input
+              name='lastname'
               id='lastname'
               placeholder='Doe'
               type='text'
@@ -78,6 +130,7 @@ export default function RegisterPage() {
         <LabelInputContainer className='mb-4'>
           <Label htmlFor='email'>Email Addresse</Label>
           <Input
+            name='email'
             id='email'
             placeholder='din@email.com'
             type='email'
@@ -86,17 +139,19 @@ export default function RegisterPage() {
         <LabelInputContainer className='mb-4'>
           <Label htmlFor='password'>Kodeord</Label>
           <Input
+            name='password'
             id='password'
             placeholder='••••••••'
             type='password'
           />
         </LabelInputContainer>
         <LabelInputContainer className='mb-8'>
-          <Label htmlFor='twitterpassword'>Gentag kodeord</Label>
+          <Label htmlFor='repeatPassword'>Gentag kodeord</Label>
           <Input
-            id='twitterpassword'
+            name='repeatPassword'
+            id='repeatPassword'
             placeholder='••••••••'
-            type='twitterpassword'
+            type='password'
           />
         </LabelInputContainer>
 
