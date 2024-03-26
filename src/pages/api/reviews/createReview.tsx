@@ -25,7 +25,6 @@ async function createNewReview(
   const { userId, rating, review } = req.body;
 
   try {
-    // Default checks for rating and review length
     const existingReview = await Review.findOne({ userId });
     if (existingReview) {
       return res

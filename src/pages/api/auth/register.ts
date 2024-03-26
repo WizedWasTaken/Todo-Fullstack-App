@@ -46,6 +46,7 @@ export default async function handler(
       email,
       password: hashedPassword,
       name: `${firstName} ${lastName}`,
+      image: '/public/images/default-profile.jpg',
     });
 
     console.log('Register User:', user);

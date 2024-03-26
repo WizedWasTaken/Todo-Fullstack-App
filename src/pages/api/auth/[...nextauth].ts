@@ -80,11 +80,16 @@ export const authOptions = {
   callbacks: {
     async session({ session, user }: { session: any; user: any }) {
       await dbConnect();
-      session.user.groups = await getUserGroups(session.user.email);
+      const dbUser = await getUserInfo(session.user.email);
+      console.log('DB User:', dbUser);
+      session.user.groups = dbUser.group;
+      session.user.image = dbUser.image;
       return session;
     },
     async jwt({ token, user }: { token: any; user: any }) {
-      token.groups = await getUserGroups(token.email);
+      const dbUser = await getUserInfo(token.email);
+      token.groups = dbUser.group;
+      token.image = dbUser.image;
       return token;
     },
     async signIn({ user, account }: { user: any; account: any }) {
@@ -101,12 +106,18 @@ export const authOptions = {
           provider: account?.provider,
           providerId: account?.providerAccountId,
         });
+      } else {
+        await User.findOneAndUpdate(
+          { email: user.email },
+          {
+            image: user.image,
+            provider: account?.provider,
+            providerId: account?.providerAccountId,
+          }
+        ).exec();
       }
 
       return true;
-    },
-    async redirect() {
-      return '/dashboard';
     },
   },
   debug: true,
@@ -114,7 +125,6 @@ export const authOptions = {
 
 export default NextAuth(authOptions);
 
-async function getUserGroups(userEmail: string) {
-  const user = await User.findOne({ email: userEmail }).exec();
-  return user?.group || [];
+async function getUserInfo(email: string) {
+  return await User.findOne({ email }).exec();
 }

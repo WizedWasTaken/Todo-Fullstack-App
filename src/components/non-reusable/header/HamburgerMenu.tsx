@@ -7,7 +7,6 @@ import {
   normalMenuItems,
   loginRegisterMenuItems,
 } from '@/lib/utils/design/menuItems';
-import { on } from 'events';
 
 /**
  * HTML for the hamburger menu in the nav bar.
@@ -106,7 +105,7 @@ export default function HamburgerMenu() {
         className={`absolute p-5 left-0 w-full flex top-0 flex-end justify-end transition-translate duration-300 z-50  ${
           menuOpen
             ? 'translate-x-0 dark:bg-white dark:bg-opacity-50 bg-black bg-opacity-70'
-            : 'translate-x-full hidden'
+            : 'translate-x-full'
         }`}
         ref={hamburgerRef}
       >

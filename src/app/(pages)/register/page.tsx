@@ -15,12 +15,7 @@ import { signIn } from 'next-auth/react';
  * @returns HTML for the register page
  */
 export default function RegisterPage() {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Implement login logic here');
-  };
-
-  // Find a way to alert other than using alert
+  // TODO: Find a way to alert other than using alert
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -32,43 +27,44 @@ export default function RegisterPage() {
       }
     }
 
-    const result = await fetch('/api/auth/register', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: formData.get('email'),
-        password: formData.get('password'),
-        repeatPassword: formData.get('repeatPassword'),
-        firstName: formData.get('firstname'),
-        lastName: formData.get('lastname'),
-      }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then(async (res) => {
-        if (res.ok) {
-          alert('User created successfully');
-
-          console.log(formData.get('email'), formData.get('password'));
-          const signInResult = await signIn('credentials', {
-            redirect: false, // Handle redirection manually
-            email: formData.get('email'),
-            password: formData.get('password'),
-          });
-
-          if (signInResult?.error) {
-            alert(`Login failed: ${signInResult.error}`);
-          } else {
-            location.reload();
-            window.location.href = '/'; // Redirect to home page
-          }
-        } else {
-          alert('An error occurred');
-        }
-      })
-      .catch(() => {
-        alert('An error occurred');
+    // TODO: An error occured happens a bit too often.
+    try {
+      const response = await fetch('/api/auth/register', {
+        method: 'POST',
+        body: JSON.stringify({
+          email: formData.get('email'),
+          password: formData.get('password'),
+          repeatPassword: formData.get('repeatPassword'),
+          firstName: formData.get('firstname'),
+          lastName: formData.get('lastname'),
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
       });
+
+      if (response.ok) {
+        alert('User created successfully');
+
+        // Redirect false would be the best option, but creates an error. "TypeError: Failed to construct 'URL': Invalid URL"
+        const signInResult = await signIn('credentials', {
+          email: formData.get('email'),
+          password: formData.get('password'),
+        });
+
+        if (signInResult?.error) {
+          alert(`Login failed: ${signInResult.error}`);
+        } else {
+          location.reload();
+          window.location.href = '/plan'; // TODO: Better way to redirect & reload???
+        }
+      } else {
+        alert('An error occurred  (else)');
+      }
+    } catch (error) {
+      alert(`An error occurred: ${error}`);
+      console.log('Catch triggered');
+    }
   };
 
   const logInOptions = [
@@ -95,7 +91,6 @@ export default function RegisterPage() {
     },
   ];
 
-  // TODO: registerUser is also submitted when using OAuth buttons. Fix this
   return (
     <main className='flex flex-col flex-grow items-center justify-center w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input'>
       <h2 className='font-bold text-xl text-neutral-800 dark:text-neutral-200 text-center'>
@@ -106,11 +101,11 @@ export default function RegisterPage() {
       </p>
 
       <form
-        className='my-8'
+        className='my-6'
         onSubmit={registerUser}
       >
-        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
-          <LabelInputContainer>
+        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
+          <LabelInputContainer className='mb-3'>
             <Label htmlFor='firstname'>Fornavn</Label>
             <Input
               name='firstname'
@@ -119,7 +114,7 @@ export default function RegisterPage() {
               type='text'
             />
           </LabelInputContainer>
-          <LabelInputContainer>
+          <LabelInputContainer className='mb-3'>
             <Label htmlFor='lastname'>Efternavn</Label>
             <Input
               name='lastname'
@@ -129,7 +124,7 @@ export default function RegisterPage() {
             />
           </LabelInputContainer>
         </div>
-        <LabelInputContainer className='mb-4'>
+        <LabelInputContainer className='mb-2'>
           <Label htmlFor='email'>Email Addresse</Label>
           <Input
             name='email'
@@ -138,7 +133,7 @@ export default function RegisterPage() {
             type='email'
           />
         </LabelInputContainer>
-        <LabelInputContainer className='mb-4'>
+        <LabelInputContainer className='mb-5'>
           <Label htmlFor='password'>Kodeord</Label>
           <Input
             name='password'
@@ -147,7 +142,7 @@ export default function RegisterPage() {
             type='password'
           />
         </LabelInputContainer>
-        <LabelInputContainer className='mb-8'>
+        <LabelInputContainer className='mb-6'>
           <Label htmlFor='repeatPassword'>Gentag kodeord</Label>
           <Input
             name='repeatPassword'
@@ -164,9 +159,11 @@ export default function RegisterPage() {
           Opret Konto &rarr;
           <BottomGradient />
         </button>
+        <div className='bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent mt-8 mb-2 h-[1px] w-full' />
+      </form>
 
-        <div className='bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full' />
-
+      {/* TODO: Can i clean this code with a new function??? */}
+      <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
         <div className='flex flex-col space-y-4'>
           <p className='text-neutral-600 dark:text-neutral-300 text-sm text-center'>
             Eller opret en konto med
@@ -177,7 +174,6 @@ export default function RegisterPage() {
                 key={index}
                 onClick={() => signIn(option.id)}
                 className='relative group/btn flex space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
-                // type='submit'
               >
                 {option.icon}
                 <span className='text-neutral-700 dark:text-neutral-300 text-sm'>
@@ -188,7 +184,7 @@ export default function RegisterPage() {
             ))}
           </div>
         </div>
-      </form>
+      </div>
     </main>
   );
 }

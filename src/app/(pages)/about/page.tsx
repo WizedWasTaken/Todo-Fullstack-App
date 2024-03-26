@@ -3,6 +3,7 @@
 
 // importing necessary functions
 import { useSession, signOut } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -15,10 +16,18 @@ import { useEffect } from 'react';
 export default function About() {
   // extracting data from usesession as session
   const { data: session } = useSession();
+  const router = useRouter();
+
+  async function signOutButton() {
+    console.log('Signing out');
+    await signOut({ redirect: false }); // Prevent automatic redirection after sign out
+    router.refresh(); // Reload the current page
+  }
 
   useEffect(() => {
     if (!session) {
       console.log('No session');
+      console.log('Session:', session);
     }
   }, [session]);
 
@@ -42,7 +51,7 @@ export default function About() {
         <p className='font-bold mb-4'>{session.user?.email}</p>
         <button
           className='bg-red-600 py-2 px-6 rounded-md'
-          onClick={() => signOut()}
+          onClick={signOutButton}
         >
           Sign out
         </button>
