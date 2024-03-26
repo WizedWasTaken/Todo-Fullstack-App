@@ -59,7 +59,8 @@ export default function RegisterPage() {
           if (signInResult?.error) {
             alert(`Login failed: ${signInResult.error}`);
           } else {
-            window.location.href = '/'; // Or your desired callback URL
+            location.reload();
+            window.location.href = '/'; // Redirect to home page
           }
         } else {
           alert('An error occurred');
