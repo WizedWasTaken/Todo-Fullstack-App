@@ -6,6 +6,7 @@ import {
   normalMenuItems,
   loginRegisterMenuItems,
 } from '@/lib/utils/design/menuItems';
+import { useSession } from 'next-auth/react';
 
 /**
  * Navigation bar with linkt to different pages, links can be added in the menuItems.ts file
@@ -13,6 +14,9 @@ import {
  */
 export default function NavBar() {
   const pathname = usePathname();
+  const { data: session } = useSession();
+
+  console.log('Session: (nav)', session);
 
   return (
     <nav className='justify-between w-full flex-row hidden md:flex'>
@@ -35,24 +39,43 @@ export default function NavBar() {
             );
           })}
         </ul>
-        <ul className='flex gap-2 justify-end items-end w-full'>
-          {loginRegisterMenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <Link
-                  href={item.path}
-                  className={` dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
-                    pathname === item.path
-                      ? 'border-b-4 border-b-blue-500'
-                      : 'text-primary-500'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        {!session && (
+          <ul className='flex gap-2 justify-end items-end flex-grow'>
+            {loginRegisterMenuItems.map((item: any, index: any) => {
+              return (
+                <li key={index}>
+                  <Link
+                    href={item.path}
+                    className={` dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
+                      pathname === item.path
+                        ? 'border-b-4 border-b-blue-500'
+                        : 'text-primary-500'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        )}
+        {session && (
+          <ul className='flex gap-2 justify-end items-end flex-grow'>
+            <li>
+              <Link
+                href='/profile'
+                className={`dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
+                  pathname === '/profile'
+                    ? 'border-b-4 border-b-blue-500'
+                    : 'text-primary-500'
+                }`}
+              >
+                Profile
+              </Link>
+            </li>
+            <li></li>
+          </ul>
+        )}
       </ul>
     </nav>
   );

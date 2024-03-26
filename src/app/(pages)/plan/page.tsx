@@ -1,15 +1,11 @@
-'use client';
-
-import { useSession } from 'next-auth/react';
-
-export default function Page() {
-  const { data: session, status } = useSession();
-
-  if (status === 'loading')
-    return (
-      <p className='flex flex-grow align-center justify-center'>Loading...</p>
-    );
+/**
+ *
+ * @returns HTML for the Login page
+ */
+export default function Login() {
   return (
-    <pre className='flex flex-grow'>{JSON.stringify(session, null, 2)}</pre>
+    <main className='flex flex-grow items-center justify-center'>
+      <h1>Planlæg</h1>
+    </main>
   );
 }
