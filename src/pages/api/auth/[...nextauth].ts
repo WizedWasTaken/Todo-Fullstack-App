@@ -9,6 +9,8 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 
 // database
 import User from '@/lib/models/User';
+const mongoose = require('mongoose');
+import Project from '@/lib/models/Project';
 import dbConnect from '@/lib/utils/database/dbConnect';
 
 export const authOptions = {
@@ -81,7 +83,6 @@ export const authOptions = {
     async session({ session, user }: { session: any; user: any }) {
       await dbConnect();
       const dbUser = await getUserInfo(session.user.email);
-      console.log('DB User:', dbUser);
       session.user.groups = dbUser.group;
       session.user.image = dbUser.image;
       return session;
@@ -115,6 +116,29 @@ export const authOptions = {
             providerId: account?.providerAccountId,
           }
         ).exec();
+      }
+
+      try {
+        const userId = '6602efc66862ea12d1a73614';
+        const projectId = '6602efc86862ea12d1a73619';
+
+        // Convert string IDs to mongoose ObjectID
+        const userIdObj = new mongoose.Types.ObjectId(userId);
+        const projectIdObj = new mongoose.Types.ObjectId(projectId);
+
+        // Add project ID to user's projects array
+        await User.findByIdAndUpdate(userIdObj, {
+          $push: { projects: projectIdObj },
+        });
+
+        // Optionally, add user ID to project's members array
+        await Project.findByIdAndUpdate(projectIdObj, {
+          $push: { members: userIdObj },
+        });
+
+        console.log(`User ${userId} added to project ${projectId}`);
+      } catch (error) {
+        console.error('Error linking user to project:', error);
       }
 
       return true;
