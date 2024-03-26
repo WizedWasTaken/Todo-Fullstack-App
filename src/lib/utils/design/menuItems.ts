@@ -41,6 +41,20 @@ export const loginRegisterMenuItems = [
 ];
 
 /**
+ * Profile navigation list items for the nav bar
+ */
+export const profileMenuItems = [
+  {
+    name: 'Konto',
+    path: '/dashboard',
+  },
+  {
+    name: 'Log ud',
+    path: '/api/auth/logout',
+  },
+];
+
+/**
  * Admin navigation list items for the nav bar
  */
 export const adminMenuItems = [

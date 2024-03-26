@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import {
   normalMenuItems,
   loginRegisterMenuItems,
+  profileMenuItems,
 } from '@/lib/utils/design/menuItems';
 import { useSession } from 'next-auth/react';
 
@@ -61,19 +62,22 @@ export default function NavBar() {
         )}
         {session && (
           <ul className='flex gap-2 justify-end items-end flex-grow'>
-            <li>
-              <Link
-                href='/profile'
-                className={`dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
-                  pathname === '/profile'
-                    ? 'border-b-4 border-b-blue-500'
-                    : 'text-primary-500'
-                }`}
-              >
-                Profile
-              </Link>
-            </li>
-            <li></li>
+            {profileMenuItems.map((item: any, index: any) => {
+              return (
+                <li key={index}>
+                  <Link
+                    href={item.path}
+                    className={`dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md ${
+                      pathname === item.path
+                        ? 'border-b-4 border-b-blue-500'
+                        : 'text-primary-500'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         )}
       </ul>
