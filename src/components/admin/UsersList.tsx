@@ -21,11 +21,13 @@ export default function UsersList() {
     async function fetchUsers() {
       try {
         const response = await fetch('/api/admin/users');
+        if (!response.ok) {
+          throw new Error('Failed to fetch users');
+        }
         const data: UserData[] = await response.json();
-        console.log(data);
         setUsers(data);
       } catch (error) {
-        return;
+        setUsers([]);
       }
     }
 

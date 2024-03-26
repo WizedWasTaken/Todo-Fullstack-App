@@ -3,7 +3,7 @@ import dbConnect from '@/lib/utils/database/dbConnect';
 import User from '@/lib/models/User';
 import { UserData } from '@/lib/types';
 
-import validate from '@/lib/server/validateToken';
+import validate from '@/lib/server/validateAdmin';
 
 // Assuming validate is adjusted to work with promises for this example
 export default async function handler(
@@ -13,15 +13,11 @@ export default async function handler(
   await dbConnect();
 
   try {
-    await new Promise((resolve, reject) => {
-      validate(req, res, (err?: any) => {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(null);
-        }
-      });
-    });
+    if (!(await validate(req, res))) {
+      return res.status(401).json({ message: 'Unauthorized' });
+    }
+
+    console.log('Validate Passed');
 
     switch (req.method) {
       case 'GET':
