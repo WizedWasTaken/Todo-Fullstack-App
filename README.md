@@ -18,8 +18,8 @@ This app is like the Avengers of development tools, but cooler and with less int
 First, you'll need to clone this repository - it's like inviting the app to a party at your local server:
 
 ```bash
-git clone https://github.com/your-repo/awesome-todo.git
-cd awesome-todo
+git clone https://github.com/WizedWasTaken/online-blog-site.git
+cd online-blog-site
 ```
 
 Then, fire up the development server and let the magic begin:
