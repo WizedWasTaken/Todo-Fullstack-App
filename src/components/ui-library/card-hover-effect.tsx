@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/lib/utils/design/cn';
+import { cn } from '@/lib/utils/classNames';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useState } from 'react';
 

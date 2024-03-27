@@ -2,7 +2,7 @@
 import React from 'react';
 import { Label } from '@/components/ui-library/label';
 import { Input } from '@/components/ui-library/input';
-import { cn } from '@/lib/utils/design/cn';
+import { cn } from '@/lib/utils/classNames';
 import {
   IconBrandGithub,
   IconBrandGoogle,

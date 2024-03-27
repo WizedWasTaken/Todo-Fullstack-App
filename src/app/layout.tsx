@@ -4,7 +4,7 @@ import { Analytics } from '@vercel/analytics/react'; // Analytics for the app
 import type { Metadata } from 'next';
 import { ReactNode } from 'react';
 import { inter } from '@/lib/utils/fonts';
-import '@/styling/globals.scss';
+import '@/app/globals.scss';
 
 // Theme
 import Theme from '@/lib/theme/theme-provider';

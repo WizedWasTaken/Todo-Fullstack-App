@@ -6,7 +6,7 @@ import {
   normalMenuItems,
   loginRegisterMenuItems,
   profileMenuItems,
-} from '@/lib/utils/design/menuItems';
+} from '@/lib/utils/menuItems';
 import { useSession } from 'next-auth/react';
 
 /**

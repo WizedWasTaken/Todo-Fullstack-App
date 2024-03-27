@@ -12,7 +12,7 @@ import {
 import { CheckCircle2 } from 'lucide-react';
 import { Button } from '@/components/ui-library/button';
 import React, { useState } from 'react';
-import { cn } from '@/lib/utils/design/cn';
+import { cn } from '@/lib/utils/classNames';
 import Link from 'next/link';
 
 type PricingSwitchProps = {

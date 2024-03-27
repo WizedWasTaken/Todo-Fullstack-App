@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 
 // Components
-import { FrontpageCards } from '@/lib/utils/design/cards';
+import { FrontpageCards } from '@/lib/utils/cards';
 import PriceCards from '@/components/non-reusable/priceCards';
 import { HoverEffect } from '@/components/ui-library/card-hover-effect';
 import Reviews from '@/components/non-reusable/frontpageReviews';
