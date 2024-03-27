@@ -30,44 +30,20 @@ export default function RegisterPage() {
       }
     }
 
-    // TODO: An error occured happens a bit too often.
-    try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        body: JSON.stringify({
-          email: formData.get('email'),
-          password: formData.get('password'),
-          repeatPassword: formData.get('repeatPassword'),
-          firstName: formData.get('firstname'),
-          lastName: formData.get('lastname'),
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-
-      if (response.ok) {
-        alert('User created successfully');
-
-        // Redirect false would be the best option, but creates an error. "TypeError: Failed to construct 'URL': Invalid URL"
-        const signInResult = await signIn('credentials', {
-          email: formData.get('email'),
-          password: formData.get('password'),
-        });
-
-        if (signInResult?.error) {
-          alert(`Login failed: ${signInResult.error}`);
-        } else {
-          location.reload();
-          window.location.href = '/plan'; // TODO: Better way to redirect & reload???
+    signIn('credentials', {
+      email: formData.get('email'),
+      password: formData.get('password'),
+    })
+      .then((res) => {
+        if (res?.error) {
+          alert(res.error);
         }
-      } else {
-        alert('An error occurred  (else)');
-      }
-    } catch (error) {
-      alert(`An error occurred: ${error}`);
-      console.log('Catch triggered');
-    }
+        alert('You have successfully logged in');
+        location.href = '/dashboard';
+      })
+      .catch((error) => {
+        alert('An error occurred');
+      });
   };
 
   const logInOptions = [

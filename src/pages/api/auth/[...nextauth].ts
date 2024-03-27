@@ -108,14 +108,15 @@ export const authOptions = {
           providerId: account?.providerAccountId,
         });
       } else {
-        await User.findOneAndUpdate(
-          { email: user.email },
-          {
-            image: user.image,
-            provider: account?.provider,
-            providerId: account?.providerAccountId,
-          }
-        ).exec();
+        const existingUser = await User.findOne({ email: user.email }).exec();
+
+        if (!existingUser) {
+          throw new Error('User not found');
+        }
+
+        existingUser.provider = account?.provider;
+        existingUser.providerId = account?.providerAccountId;
+        await existingUser.save();
       }
 
       return true;
