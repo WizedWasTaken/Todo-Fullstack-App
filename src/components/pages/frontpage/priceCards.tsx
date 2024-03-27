@@ -1,5 +1,6 @@
 'use client';
 
+// Imports
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui-library/tabs';
 import {
   Card,
@@ -15,6 +16,7 @@ import React, { useState } from 'react';
 import { cn } from '@/lib/utils/classNames';
 import Link from 'next/link';
 
+// Types
 type PricingSwitchProps = {
   onSwitch: (value: string) => void;
 };
@@ -31,20 +33,10 @@ type PricingCardProps = {
   exclusive?: boolean;
 };
 
-const PricingHeader = ({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle: string;
-}) => (
-  <section className='text-center'>
-    <h2 className='text-3xl font-bold'>{title}</h2>
-    <p className='text-xl pt-1'>{subtitle}</p>
-    <br />
-  </section>
-);
-
+/*
+ * Pricing Switch component
+ * Used for switching between monthly and yearly pricing plans
+ */
 const PricingSwitch = ({ onSwitch }: PricingSwitchProps) => (
   <Tabs
     defaultValue='0'
@@ -68,6 +60,10 @@ const PricingSwitch = ({ onSwitch }: PricingSwitchProps) => (
   </Tabs>
 );
 
+/*
+ * Pricing Card component
+ * Used for displaying pricing plans
+ */
 const PricingCard = ({
   isYearly,
   title,
@@ -154,6 +150,10 @@ const PricingCard = ({
   </Card>
 );
 
+/*
+ * Check Item component
+ * Used for displaying check items in the pricing card
+ */
 const CheckItem = ({ text }: { text: string }) => (
   <div className='flex gap-2'>
     <CheckCircle2
@@ -164,8 +164,9 @@ const CheckItem = ({ text }: { text: string }) => (
   </div>
 );
 
-/**
- * @returns HTML for the Pricing Segment
+/*
+ * Price Cards component
+ * Used for displaying pricing cards
  */
 export default function PriceCards() {
   const [isYearly, setIsYearly] = useState(true);

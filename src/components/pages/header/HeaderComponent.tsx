@@ -2,10 +2,9 @@ import NavBar from '@/components/pages/header/NavComponent';
 import HamburgerMenu from '@/components/pages/header/HamburgerMenu';
 import ThemeToggle from '@/lib/theme/theme-toggle';
 
-/**
+/*
  * Header component with the site title and navigation bar
  * This will be shown on all pages
- * @returns HTML for the header
  */
 export default function Header() {
   return (

@@ -1,6 +1,5 @@
-/**
- *
- * @returns HTML for the Review page
+/*
+ * HTML for the Review page
  */
 export default function Review() {
   return (

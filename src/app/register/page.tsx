@@ -1,4 +1,6 @@
 'use client';
+
+// Imports
 import React from 'react';
 import { Label } from '@/components/ui-library/label';
 import { Input } from '@/components/ui-library/input';
@@ -11,9 +13,8 @@ import {
 import LoggedInAlert from '@/components/alert/loggedInAlert';
 import { signIn, useSession } from 'next-auth/react';
 
-/**
+/*
  * Register page
- * @returns HTML for the register page
  */
 export default function RegisterPage() {
   const { data: session } = useSession();
@@ -22,6 +23,7 @@ export default function RegisterPage() {
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Form Data validation (Check if all fields are filled out)
     const formData = new FormData(e.currentTarget);
     for (let [key, value] of formData.entries() as any) {
       if (!value) {
@@ -30,7 +32,7 @@ export default function RegisterPage() {
       }
     }
 
-    // TODO: An error occured happens a bit too often.
+    // API post call to register user with inputted data
     try {
       const response = await fetch('/api/auth/register', {
         method: 'POST',
@@ -46,21 +48,19 @@ export default function RegisterPage() {
         },
       });
 
+      // Error handling for the response
       if (response.ok) {
         alert('User created successfully');
 
-        // Redirect false would be the best option, but creates an error. "TypeError: Failed to construct 'URL': Invalid URL"
-        const signInResult = await signIn('credentials', {
+        // Redirect false would be the best option, but creates an error. "TypeError: Failed to construct 'URL': Invalid URL" - works anyways 🤷‍♂️
+        await signIn('credentials', {
           email: formData.get('email'),
           password: formData.get('password'),
         });
 
-        if (signInResult?.error) {
-          alert(`Login failed: ${signInResult.error}`);
-        } else {
-          location.reload();
-          window.location.href = '/plan'; // TODO: Better way to redirect & reload???
-        }
+        // When user is created & logged in reload the page and redirect away from /register.
+        location.reload();
+        window.location.href = '/plan'; // TODO: Better way to redirect & reload???
       } else {
         alert('An error occurred  (else)');
       }
@@ -69,6 +69,7 @@ export default function RegisterPage() {
     }
   };
 
+  // OAuth log in options for buttons
   const logInOptions = [
     {
       name: 'Google',

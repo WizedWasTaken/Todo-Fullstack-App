@@ -1,6 +1,5 @@
 /**
- * 404!
- * @returns HTML for the 404 page
+ * HTML for the "Page Not Found"
  */
 export default function Custom404() {
   return (

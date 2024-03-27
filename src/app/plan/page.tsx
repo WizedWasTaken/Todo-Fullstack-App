@@ -1,6 +1,5 @@
-/**
- *
- * @returns HTML for the Login page
+/*
+ * Doesn't work yet. There's no plan for the planning page 💀
  */
 export default function Login() {
   return (

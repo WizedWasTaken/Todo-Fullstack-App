@@ -1,7 +1,5 @@
-'use client';
-
-/**
- * @returns HTML for the footer
+/*
+ * This component is the footer of the website
  */
 export default function Footer() {
   return (

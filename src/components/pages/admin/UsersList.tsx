@@ -1,6 +1,7 @@
 'use client';
-import React, { useEffect, useState } from 'react';
 
+// Imports
+import React, { useEffect, useState } from 'react';
 import {
   Table,
   TableBody,
@@ -14,6 +15,11 @@ import { UserData } from '@/lib/types';
 
 // TODO: Add table splitting, pagination, and sorting features for potential large datasets
 // TODO: Responsive table for mobile devices
+
+/*
+ * Users list component
+ * Component will fetch all users from the API and display them in a table for easy overview
+ */
 export default function UsersList() {
   const [users, setUsers] = useState<UserData[]>([]);
 

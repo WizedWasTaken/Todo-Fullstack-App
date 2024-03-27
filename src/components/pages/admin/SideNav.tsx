@@ -1,7 +1,10 @@
+// Imports
 import Link from 'next/link';
-import { adminMenuItems } from '@/lib/utils/design/menuItems';
+import { adminMenuItems } from '@/lib/utils/menuItems'; // Menu items for the admin page
 
-// TODO: If too many items are added, consider adding a scrollbar
+/*
+ * Side navigation for the admin page
+ */
 export default function SideNav() {
   return (
     <aside className='w-52 mr-2 border-r-2 max-h-fit overflow-y-auto border-slate-400'>

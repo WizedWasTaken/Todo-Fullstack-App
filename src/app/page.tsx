@@ -1,11 +1,13 @@
+// Imports
 import { Metadata } from 'next';
-
-// Components
 import { FrontpageCards } from '@/lib/utils/cards';
 import PriceCards from '@/components/pages/frontpage/priceCards';
 import { HoverEffect } from '@/components/ui-library/card-hover-effect';
 import Reviews from '@/components/pages/frontpage/reviews';
 
+/*
+* Meta data for frontpage component
+*/
 export const metadata: Metadata = {
   title: 'Forside | Todo App',
 };

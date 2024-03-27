@@ -16,6 +16,8 @@ import Footer from '@/components/pages/footer/FooterComponent';
 // Auth
 import SessionWrapper from '@/lib/utils/authProvider';
 
+// TODO: Look at the Metadata automatic feature
+// Metadata for the app
 export const metadata: Metadata = {
   title: {
     template: '%s | Todo App',
@@ -24,13 +26,9 @@ export const metadata: Metadata = {
   description: 'The official todo app. Made by Noah Nielsen',
 };
 
-// TODO: Find a way to make the app router work with server calls, so that the app can be server side rendered
-
-/**
+/*
  * Layout for the app
- * @param param0 Children to be rendered
- * @param param0.children Children to be rendered
- * @returns HTML layout for the app
+ * Everything is wrapped in this layout
  */
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
@@ -45,9 +43,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
             (inter.className, 'min-h-screen flex flex-col overflow-x-hidden')
           }
         >
+          {/* Theme (Dark/Light) */}
           <Theme>
+            {/* Analytic tools for Vercel dashboard */}
             <SpeedInsights />
             <Analytics />
+            {/* UI */}
             <Header />
             {children}
             <Footer />

@@ -1,3 +1,6 @@
+/*
+ * Create new enterprise, groups, users, and manage user settings.
+ */
 export default function Dashboard() {
   return (
     <main className='flex flex-grow'>

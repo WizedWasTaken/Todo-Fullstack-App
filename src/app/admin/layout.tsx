@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import SideNav from '@/components/admin/SideNav';
+import SideNav from '@/components/pages/admin/SideNav';
 import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
@@ -9,8 +9,6 @@ export const metadata: Metadata = {
   },
   description: 'The official todo app. Made by Noah Nielsen',
 };
-
-// TODO: Find a way to make the app router work with server calls, so that the app can be server side rendered
 
 /**
  * Layout for the app

@@ -1,5 +1,6 @@
 'use client';
 
+// Imports
 import { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -10,11 +11,10 @@ import {
 } from '@/lib/utils/menuItems';
 import { useSession } from 'next-auth/react';
 
-/**
+/*
  * HTML for the hamburger menu in the nav bar.
  * This will be shown in the nav bar, and is used to generate the nav items
  * This will only show in mobile view (below 768 px)
- * @returns HTML for the hamburger menu
  */
 export default function HamburgerMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,7 +26,7 @@ export default function HamburgerMenu() {
 
   const { data: session } = useSession();
 
-  /**
+  /*
    * Adds an event listener to the window to listen for resize events
    * When the window is resized, the height of the main container and the header is recalculated
    * This is used to set the height of the hamburger menu for all screen sizes
@@ -45,7 +45,7 @@ export default function HamburgerMenu() {
     });
   }, []);
 
-  /**
+  /*
    * Sets the height of the main container and the header
    * This is used to set the height of the hamburger menu
    * and the margin top of the hamburger menu
@@ -59,7 +59,7 @@ export default function HamburgerMenu() {
     }
   }, []);
 
-  /**
+  /*
    * Sets the height of the hamburger menu to the height of the main container
    * Also sets the margin top to the height of the header
    */
@@ -70,7 +70,7 @@ export default function HamburgerMenu() {
     }
   });
 
-  /**
+  /*
    * Toggles the hamburger menu
    */
   const toggleHamburgerMenu = () => {

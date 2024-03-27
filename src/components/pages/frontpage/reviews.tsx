@@ -1,12 +1,13 @@
 'use client';
 
+// Imports
 import React, { useEffect, useState } from 'react';
 import { InfiniteMovingCards } from '@/components/ui-library/infinite-moving-cards';
 import { ReviewData } from '@/lib/types';
 
-/**
- *
- * @returns HTML and logic for the reviews component
+/*
+ * Reviews component
+ * Component fetches reviews from the API and displays them in a moving card carousel
  */
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
@@ -31,9 +32,9 @@ export default function Reviews() {
   );
 }
 
-/**
- *
- * @returns an array of reviews
+/*
+ * Fetches reviews from the API
+ * @returns Array of reviews
  */
 async function fetchReviews() {
   try {

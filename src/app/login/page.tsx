@@ -1,4 +1,6 @@
 'use client';
+
+// Imports
 import React from 'react';
 import { Label } from '@/components/ui-library/label';
 import { Input } from '@/components/ui-library/input';
@@ -11,17 +13,17 @@ import {
 import LoggedInAlert from '@/components/alert/loggedInAlert';
 import { signIn, useSession } from 'next-auth/react';
 
-/**
- * Register page
- * @returns HTML for the register page
+/*
+ * Login page
  */
-export default function RegisterPage() {
+export default function LoginPage() {
   const { data: session } = useSession();
 
   // TODO: Find a way to alert other than using alert
   const registerUser = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // Form Data validation (Check if all fields are filled out)
     const formData = new FormData(e.currentTarget);
     for (let [key, value] of formData.entries() as any) {
       if (!value) {
@@ -30,10 +32,12 @@ export default function RegisterPage() {
       }
     }
 
+    // NextAuth call to sign in with inputted credentials
     signIn('credentials', {
       email: formData.get('email'),
       password: formData.get('password'),
     })
+      // Error handling for the response
       .then((res) => {
         if (res?.error) {
           alert(res.error);
@@ -41,11 +45,13 @@ export default function RegisterPage() {
         alert('You have successfully logged in');
         location.href = '/dashboard';
       })
-      .catch((error) => {
-        alert('An error occurred');
+      // Catch errors
+      .catch(() => {
+        alert('An error occurred, try again later');
       });
   };
 
+  // OAuth log in options for buttons
   const logInOptions = [
     {
       name: 'Google',

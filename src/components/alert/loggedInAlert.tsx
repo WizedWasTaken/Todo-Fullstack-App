@@ -1,10 +1,15 @@
 'use client';
+
+// Imports
 import {
   Alert,
   AlertDescription,
   AlertTitle,
 } from '@/components/ui-library/alert';
 
+/*
+ * Alert for when a user is already logged in
+ */
 export default function LoggedInAlert() {
   return (
     <>
