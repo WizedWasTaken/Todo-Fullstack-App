@@ -168,7 +168,7 @@ const CheckItem = ({ text }: { text: string }) => (
  * @returns HTML for the Pricing Segment
  */
 export default function PriceCards() {
-  const [isYearly, setIsYearly] = useState(false);
+  const [isYearly, setIsYearly] = useState(true);
   const togglePricingPeriod = (value: string) =>
     setIsYearly(parseInt(value) === 1);
 

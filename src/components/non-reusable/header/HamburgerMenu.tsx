@@ -6,7 +6,9 @@ import { usePathname } from 'next/navigation';
 import {
   normalMenuItems,
   loginRegisterMenuItems,
+  profileMenuItems,
 } from '@/lib/utils/design/menuItems';
+import { useSession } from 'next-auth/react';
 
 /**
  * HTML for the hamburger menu in the nav bar.
@@ -21,6 +23,8 @@ export default function HamburgerMenu() {
   const hamburgerRef = useRef<HTMLDivElement>(null);
   const [mainContainerHeight, setMainContainerHeight] = useState<number>(0);
   const [headerHeight, setHeaderHeight] = useState<number>(0);
+
+  const { data: session } = useSession();
 
   /**
    * Adds an event listener to the window to listen for resize events
@@ -132,23 +136,42 @@ export default function HamburgerMenu() {
               </li>
             );
           })}
-          {loginRegisterMenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <Link href={item.path}>
-                  <div
-                    className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto p-2 py-2 rounded-md ${
-                      pathname === item.path
-                        ? 'border-r-4 border-r-blue-500'
-                        : 'text-primary-500'
-                    }`}
-                  >
-                    <p className='text-secondary-300'>{item.name}</p>
-                  </div>
-                </Link>
-              </li>
-            );
-          })}
+          {!session &&
+            loginRegisterMenuItems.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Link href={item.path}>
+                    <div
+                      className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto p-2 py-2 rounded-md ${
+                        pathname === item.path
+                          ? 'border-r-4 border-r-blue-500'
+                          : 'text-primary-500'
+                      }`}
+                    >
+                      <p className='text-secondary-300'>{item.name}</p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
+          {session &&
+            profileMenuItems.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Link href={item.path}>
+                    <div
+                      className={`dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto p-2 py-2 rounded-md ${
+                        pathname === item.path
+                          ? 'border-r-4 border-r-blue-500'
+                          : 'text-primary-500'
+                      }`}
+                    >
+                      <p className='text-secondary-300'>{item.name}</p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>

@@ -19,10 +19,6 @@ export const normalMenuItems = [
     name: 'Kontakt',
     path: '/contact',
   },
-  {
-    name: 'Planlæg',
-    path: '/plan',
-  },
 ];
 
 /**
@@ -49,8 +45,9 @@ export const profileMenuItems = [
     path: '/dashboard',
   },
   {
+    // TODO: FIX LOGOUT
     name: 'Log ud',
-    path: '/api/auth/logout',
+    path: '/api/auth/signout',
   },
 ];
 
