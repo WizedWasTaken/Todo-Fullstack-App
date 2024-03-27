@@ -1,7 +1,7 @@
 // Make a getAllReviews NextJS api endpoint
 
 import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '@/lib/utils/database/dbConnect';
+import dbConnect from '@/lib/server/dbConnect';
 import Review from '@/lib/models/Review';
 import { ReviewData } from '@/lib/types';
 

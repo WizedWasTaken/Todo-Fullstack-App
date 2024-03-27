@@ -1,5 +1,5 @@
-import NavBar from '@/components/non-reusable/header/NavComponent';
-import HamburgerMenu from '@/components/non-reusable/header/HamburgerMenu';
+import NavBar from '@/components/pages/header/NavComponent';
+import HamburgerMenu from '@/components/pages/header/HamburgerMenu';
 import ThemeToggle from '@/lib/theme/theme-toggle';
 
 /**

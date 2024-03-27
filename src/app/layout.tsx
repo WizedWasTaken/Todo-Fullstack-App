@@ -10,11 +10,11 @@ import '@/app/globals.scss';
 import Theme from '@/lib/theme/theme-provider';
 
 // Imports
-import Header from '@/components/non-reusable/header/HeaderComponent';
-import Footer from '@/components/non-reusable/FooterComponent';
+import Header from '@/components/pages/header/HeaderComponent';
+import Footer from '@/components/pages/footer/FooterComponent';
 
 // Auth
-import SessionWrapper from '@/components/non-reusable/authProvider';
+import SessionWrapper from '@/lib/utils/authProvider';
 
 export const metadata: Metadata = {
   title: {

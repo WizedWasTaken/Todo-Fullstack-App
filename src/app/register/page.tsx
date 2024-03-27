@@ -66,7 +66,6 @@ export default function RegisterPage() {
       }
     } catch (error) {
       alert(`An error occurred: ${error}`);
-      console.log('Catch triggered');
     }
   };
 

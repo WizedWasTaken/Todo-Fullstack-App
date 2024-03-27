@@ -1,4 +1,3 @@
-// TOOD: Make cards that actually make sense.
 export const FrontpageCards = [
   {
     title: 'Opret opgaver',

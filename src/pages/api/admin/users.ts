@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '@/lib/utils/database/dbConnect';
+import dbConnect from '@/lib/server/dbConnect';
 import User from '@/lib/models/User';
 import { UserData } from '@/lib/types';
 
@@ -16,8 +16,6 @@ export default async function handler(
     if (!(await validate(req, res))) {
       return res.status(401).json({ message: 'Unauthorized' });
     }
-
-    console.log('Validate Passed');
 
     switch (req.method) {
       case 'GET':

@@ -17,8 +17,6 @@ export default function NavBar() {
   const pathname = usePathname();
   const { data: session } = useSession();
 
-  console.log('Session: (nav)', session);
-
   return (
     <nav className='justify-between w-full flex-row hidden md:flex'>
       <ul className='w-full hidden justify-center flex-row md:flex mt-5 relative'>

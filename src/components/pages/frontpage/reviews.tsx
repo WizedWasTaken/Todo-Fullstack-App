@@ -1,14 +1,14 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { InfiniteMovingCards } from '../ui-library/infinite-moving-cards';
+import React, { useEffect, useState } from 'react';
+import { InfiniteMovingCards } from '@/components/ui-library/infinite-moving-cards';
 import { ReviewData } from '@/lib/types';
 
 /**
  *
  * @returns HTML and logic for the reviews component
  */
-export default function reviews() {
+export default function Reviews() {
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -39,7 +39,6 @@ async function fetchReviews() {
   try {
     const response = await fetch('/api/reviews/getReviews');
     const data = await response.json();
-    console.log('data', data);
     // TODO: Uses UserID currently. Fix this to use the actual name of the user
     return data.map((review: ReviewData) => ({
       title: 'Kunde',

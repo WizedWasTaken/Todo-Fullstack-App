@@ -9,9 +9,7 @@ import CredentialsProvider from 'next-auth/providers/credentials';
 
 // database
 import User from '@/lib/models/User';
-const mongoose = require('mongoose');
-import Project from '@/lib/models/Project';
-import dbConnect from '@/lib/utils/database/dbConnect';
+import dbConnect from '@/lib/server/dbConnect';
 
 export const authOptions = {
   providers: [
@@ -41,30 +39,23 @@ export const authOptions = {
           return null; // Ensure both email and password are present
         }
 
-        console.log('Credentials:', credentials);
-
         try {
           // Your database connection logic
           await dbConnect();
 
           // Fetching the user by email
           const user = await User.findOne({ email: credentials.email }).exec();
-          console.log('User:', user);
           if (!user) {
             // If no user is found with the email, return null
             return null;
           }
-          // TODO: User returns as null. Need to fix this
-
-          console.log('User:', user);
 
           // Verifying the password
           const isValid = await bcrypt.compare(
             credentials.password,
             user.password
           );
-
-          console.log('Password:', isValid);
+          
           if (!isValid) {
             // If the password comparison fails, return null
             return null;

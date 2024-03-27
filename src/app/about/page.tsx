@@ -19,17 +19,9 @@ export default function About() {
   const router = useRouter();
 
   async function signOutButton() {
-    console.log('Signing out');
     await signOut({ redirect: false }); // Prevent automatic redirection after sign out
     router.refresh(); // Reload the current page
   }
-
-  useEffect(() => {
-    if (!session) {
-      console.log('No session');
-      console.log('Session:', session);
-    }
-  }, [session]);
 
   // checking if sessions exists
   if (session) {

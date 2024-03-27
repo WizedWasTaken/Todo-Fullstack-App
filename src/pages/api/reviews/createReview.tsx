@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '@/lib/utils/database/dbConnect';
+import dbConnect from '@/lib/server/dbConnect';
 import Review from '@/lib/models/Review';
 import { ReviewData } from '@/lib/types';
 
@@ -45,7 +45,6 @@ async function createNewReview(
       rating,
       review,
     });
-    console.log('newReview', newReview);
 
     res.status(201).json(newReview);
   } catch (error) {

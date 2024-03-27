@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 
 // Components
 import { FrontpageCards } from '@/lib/utils/cards';
-import PriceCards from '@/components/non-reusable/priceCards';
+import PriceCards from '@/components/pages/frontpage/priceCards';
 import { HoverEffect } from '@/components/ui-library/card-hover-effect';
-import Reviews from '@/components/non-reusable/frontpageReviews';
+import Reviews from '@/components/pages/frontpage/reviews';
 
 export const metadata: Metadata = {
   title: 'Forside | Todo App',
@@ -32,14 +32,15 @@ export default function Home() {
       <section className='flex w-full flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Funktioner</h2>
         <HoverEffect items={FrontpageCards} />
+        {/* Cards with moving background */}
       </section>
       <section className='w-screen flex flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Hvad vores brugere siger</h2>
-        <Reviews />
+        <Reviews /> {/* Reviews from users running in a loop */}
       </section>
       <section className='flex w-full flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Priser</h2>
-        <PriceCards />
+        <PriceCards /> {/* Pricing cards */}
       </section>
     </main>
   );

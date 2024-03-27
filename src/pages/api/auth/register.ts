@@ -1,5 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import dbConnect from '@/lib/utils/database/dbConnect';
+import dbConnect from '@/lib/server/dbConnect';
 import User from '@/lib/models/User';
 import { UserData } from '@/lib/types';
 import bcrypt from 'bcryptjs';
@@ -39,7 +39,6 @@ export default async function handler(
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
-    console.log('Hashed Password', hashedPassword);
 
     // Create a new user
     const user = new User({
@@ -47,10 +46,7 @@ export default async function handler(
       password: hashedPassword,
       name: `${firstName} ${lastName}`,
       image: '/public/images/default-profile.jpg',
-      
     });
-
-    console.log('Register User:', user);
 
     await user.save();
 
