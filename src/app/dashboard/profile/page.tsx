@@ -1,11 +1,11 @@
 /**
  *
- * @returns HTML for the Login page
+ * @returns HTML for the Profile page
  */
-export default function Login() {
+export default function Profile() {
   return (
     <main className='flex flex-grow items-center justify-center'>
-      <h1>Dashboard</h1>
+      <h1>Profile</h1>
     </main>
   );
 }

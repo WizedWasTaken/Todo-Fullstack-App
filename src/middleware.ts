@@ -9,6 +9,18 @@ export async function middleware(req: any) {
   const secret = process.env.NEXTAUTH_SECRET;
   const token: any = await getToken({ req, secret });
 
+  // Dashboard route
+  const isDashboardRoute = req.nextUrl.pathname.startsWith('/dashboard');
+  if (isDashboardRoute) {
+    if (!token) {
+      const url = req.nextUrl.clone();
+      url.pathname = '/login';
+      return NextResponse.redirect(url);
+    }
+
+    return NextResponse.next();
+  }
+
   // Admin routes
   const isAdminRoute = req.nextUrl.pathname.startsWith('/admin');
   if (isAdminRoute) {

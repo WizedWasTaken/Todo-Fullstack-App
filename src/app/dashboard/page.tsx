@@ -10,9 +10,9 @@ import Link from 'next/link';
 
 /**
  *
- * @returns HTML for the about page
+ * @returns HTML for the dashboard page
  */
-export default function About() {
+export default function Dashboard() {
   // extracting data from usesession as session
   const { data: session } = useSession();
   const router = useRouter();
@@ -22,11 +22,9 @@ export default function About() {
     router.refresh(); // Reload the current page
   }
 
-  // checking if sessions exists
   if (session) {
-    // rendering components for logged in users
     return (
-      <div className='flex-grow flex flex-col justify-center items-center'>
+      <div className='flex h-full flex-col justify-center items-center'>
         <div className='w-44 h-44 relative mb-4'>
           <Image
             src={session.user?.image as string}
@@ -49,4 +47,6 @@ export default function About() {
       </div>
     );
   }
+
+  return 'Du er ikke logget ind. Log ind for at se denne side.';
 }

@@ -72,3 +72,25 @@ export const adminMenuItems = [
     path: '/admin/settings',
   },
 ];
+
+/*
+ * Menu items for the dashboard page
+ */
+export const dashboardMenuItems = [
+  {
+    name: 'Dashboard',
+    path: '/dashboard',
+  },
+  {
+    name: 'Profil',
+    path: '/dashboard/profile',
+  },
+  {
+    name: 'Indstillinger',
+    path: '/dashboard/settings',
+  },
+  {
+    name: 'Log ud',
+    path: '/api/auth/signout',
+  },
+];
