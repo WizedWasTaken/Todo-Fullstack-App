@@ -39,7 +39,7 @@ type PricingCardProps = {
  */
 const PricingSwitch = ({ onSwitch }: PricingSwitchProps) => (
   <Tabs
-    defaultValue='0'
+    defaultValue='1'
     className='w-40 mx-auto'
     onValueChange={onSwitch}
   >
