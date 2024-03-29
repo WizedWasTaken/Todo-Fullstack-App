@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import SideNav from '@/components/pages/admin/SideNav';
+import AdminBreadcrumb from '@/components/pages/breadcrumb';
 import { ReactNode } from 'react';
 
 export const metadata: Metadata = {
@@ -20,7 +21,10 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
     <div className='flex flex-grow'>
       <SideNav />
-      <div className='flex-grow'>{children}</div>
+      <div className='relative flex-grow'>
+        <AdminBreadcrumb />
+        <div className='flex-grow px-3 mt-8'>{children}</div>
+      </div>
     </div>
   );
 }

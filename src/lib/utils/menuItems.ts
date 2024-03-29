@@ -57,7 +57,7 @@ export const profileMenuItems = [
 export const adminMenuItems = [
   {
     name: 'Dashboard',
-    path: '/admin/dashboard',
+    path: '/admin',
   },
   {
     name: 'Users',

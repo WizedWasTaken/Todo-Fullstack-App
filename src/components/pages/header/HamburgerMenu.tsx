@@ -75,7 +75,7 @@ export default function HamburgerMenu() {
    */
   const toggleHamburgerMenu = () => {
     //   TODO: Find a way to make this feel better, instead of being so fast.
-    document.body.style.overflow = menuOpen ? 'auto' : 'hidden';
+    document.body.style.overflow = menuOpen ? '' : 'hidden';
     setMenuOpen(!menuOpen);
   };
 

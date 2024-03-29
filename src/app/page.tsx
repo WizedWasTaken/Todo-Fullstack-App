@@ -20,21 +20,19 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <main className='flex flex-col flex-grow items-center justify-center container mx-auto gap-20 my-20'>
-      <section className='flex w-full justify-center items-center'>
-        <div>
-          <p className='text-center text-1xl font-semibold'>Velkommen til</p>
-          <Spotlight
-            className='-top-20 left-0 md:left-80 md:-top-60'
-            fill='white'
-          />
-          <h1 className='text-center text-3xl m-4 font-bold antialiased'>
-            Todo App
-          </h1>
-          <p className='text-center'>
-            Hjemmesiden der gør planlægning af store software projekter til en
-            leg.
-          </p>
-        </div>
+      <section className='flex w-full justify-center items-center flex-col'>
+        <Spotlight
+          className='absolute md:-top-60 top-1/2'
+          fill='white'
+        />
+        <p className='text-center text-1xl font-semibold'>Velkommen til</p>
+        <h1 className='text-center text-3xl m-4 font-bold antialiased'>
+          Todo App
+        </h1>
+        <p className='text-center'>
+          Hjemmesiden der gør planlægning af store software projekter til en
+          leg.
+        </p>
       </section>
       <section className='flex w-full flex-col justify-center items-center'>
         <h2 className='text-2xl font-semibold'>Funktioner</h2>
