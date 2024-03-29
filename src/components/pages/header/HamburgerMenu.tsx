@@ -75,18 +75,17 @@ export default function HamburgerMenu() {
    */
   const toggleHamburgerMenu = () => {
     //   TODO: Find a way to make this feel better, instead of being so fast.
+    document.body.style.overflow = menuOpen ? 'auto' : 'hidden';
     setMenuOpen(!menuOpen);
   };
 
   return (
     <div className={`md:hidden cursor-pointer`}>
       {/* Hamburger Menu Icon */}
-      {/* TODO: Make animated */}
       <div
         className='h-full flex flex-col gap-2 w-full'
         onClick={toggleHamburgerMenu}
       >
-        {/* TODO: Hamburger animated icon isn't exactly centered when opened. */}
         <div
           className={`border-2 border-black dark:border-white w-9 transition-transform duration-300 ${
             menuOpen ? 'transform -rotate-45 translate-y-4' : ''
@@ -104,12 +103,11 @@ export default function HamburgerMenu() {
         ></div>
       </div>
       {/* Hamburger Menu Content */}
-      {/* TODO: Hidden for now, as it otherwise creates overflow */}
       <div
-        className={`absolute p-5 left-0 w-full flex top-0 flex-end justify-end transition-translate duration-300 z-50  ${
+        className={`fixed p-5 left-0 w-full flex top-0 flex-end justify-end transition-translate duration-300 z-50 overflow-hidden ${
           menuOpen
-            ? 'translate-x-0 dark:bg-white dark:bg-opacity-50 bg-black bg-opacity-70'
-            : 'translate-x-full'
+            ? 'translate-x-0 dark:bg-white dark:bg-opacity-50 bg-black bg-opacity-70 visible'
+            : 'translate-x-full invisible'
         }`}
         ref={hamburgerRef}
       >

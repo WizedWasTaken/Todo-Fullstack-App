@@ -40,7 +40,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       >
         <body
           className={
-            (inter.className, 'min-h-screen flex flex-col overflow-x-hidden')
+            (inter.className,
+            'min-h-screen max-w-screen flex flex-col overflow-x-hidden')
           }
         >
           {/* Theme (Dark/Light) */}
