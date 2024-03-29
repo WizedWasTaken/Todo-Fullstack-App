@@ -90,7 +90,7 @@ export const dashboardMenuItems = [
     path: '/dashboard/settings',
   },
   {
-    name: 'Log ud',
-    path: '/api/auth/signout',
+    name: 'Projekter',
+    path: '/dashboard/projects',
   },
 ];

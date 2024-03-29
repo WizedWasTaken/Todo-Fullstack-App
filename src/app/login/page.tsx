@@ -36,19 +36,8 @@ export default function LoginPage() {
     signIn('credentials', {
       email: formData.get('email'),
       password: formData.get('password'),
-    })
-      // Error handling for the response
-      .then((res) => {
-        if (res?.error) {
-          alert(res.error);
-        }
-        alert('You have successfully logged in');
-        location.href = '/dashboard';
-      })
-      // Catch errors
-      .catch(() => {
-        alert('An error occurred, try again later');
-      });
+      callbackUrl: '/dashboard',
+    });
   };
 
   // OAuth log in options for buttons
@@ -140,7 +129,7 @@ export default function LoginPage() {
             {logInOptions.map((option, index) => (
               <button
                 key={index}
-                onClick={() => signIn(option.id)}
+                onClick={() => signIn(option.id, { callbackUrl: '/dashboard' })}
                 disabled={session ? true : false}
                 className='relative group/btn flex disabled:cursor-not-allowed space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
               >

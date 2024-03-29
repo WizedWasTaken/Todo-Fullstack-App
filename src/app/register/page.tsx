@@ -56,6 +56,7 @@ export default function RegisterPage() {
         await signIn('credentials', {
           email: formData.get('email'),
           password: formData.get('password'),
+          callbackUrl: '/dashboard',
         });
 
         // When user is created & logged in reload the page and redirect away from /register.
@@ -176,7 +177,7 @@ export default function RegisterPage() {
             {logInOptions.map((option, index) => (
               <button
                 key={index}
-                onClick={() => signIn(option.id)}
+                onClick={() => signIn(option.id, { callbackUrl: '/dashboard' })}
                 disabled={session ? true : false}
                 className='relative group/btn flex disabled:cursor-not-allowed space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
               >

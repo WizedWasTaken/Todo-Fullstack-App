@@ -36,11 +36,10 @@ export const authOptions = {
       },
       async authorize(credentials, req) {
         if (!credentials || !credentials.email || !credentials.password) {
-          return null; // Ensure both email and password are present
+          return null;
         }
 
         try {
-          // Your database connection logic
           await dbConnect();
 
           // Fetching the user by email
@@ -55,7 +54,7 @@ export const authOptions = {
             credentials.password,
             user.password
           );
-          
+
           if (!isValid) {
             // If the password comparison fails, return null
             return null;
@@ -65,7 +64,7 @@ export const authOptions = {
           return { id: user.id, email: user.email, name: user.name };
         } catch (error) {
           console.error('Authentication error:', error);
-          return null; // Return null on any error during the authentication process
+          return null;
         }
       },
     }),
@@ -113,7 +112,7 @@ export const authOptions = {
       return true;
     },
   },
-  debug: true,
+  debug: process.env.NODE_ENV === 'development',
 };
 
 export default NextAuth(authOptions);
