@@ -93,8 +93,9 @@ export const UserTableColumns: ColumnDef<UserData>[] = [
       />
     ),
     cell: ({ row }) => {
-      const group: string = row.getValue('group');
-      return <div className='text-right font-medium'>{group}</div>;
+      const group: string[] = row.getValue('group');
+      const formatted = group.join(', ');
+      return <div className='text-right font-medium'>{formatted}</div>;
     },
   },
   {
@@ -103,22 +104,6 @@ export const UserTableColumns: ColumnDef<UserData>[] = [
     cell: ({ row }) => {
       const providerId: string = row.getValue('providerId');
       return <div className='text-right font-medium'>{providerId}</div>;
-    },
-  },
-  {
-    accessorKey: 'image',
-    header: () => <div className='text-right'>Billede</div>,
-    cell: ({ row }) => {
-      const image: string = row.getValue('image');
-      return <div className='text-right font-medium'>{image}</div>;
-    },
-  },
-  {
-    accessorKey: '_id',
-    header: () => <div className='text-right'>ID</div>,
-    cell: ({ row }) => {
-      const _id: string = row.getValue('_id');
-      return <div className='text-right font-medium'>{_id}</div>;
     },
   },
   // TODO: Dropdown menu is looking weird as fuck 😭.
@@ -134,12 +119,12 @@ export const UserTableColumns: ColumnDef<UserData>[] = [
               variant='ghost'
               className='h-8 w-8 p-0'
             >
-              <span className='sr-only'>Open menu</span>
+              <span className='sr-only'>Åben menu</span>
               <MoreHorizontal className='h-4 w-4' />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuLabel>Muligheder</DropdownMenuLabel>
             <DropdownMenuItem
               onClick={() => navigator.clipboard.writeText(user._id)}
             >
