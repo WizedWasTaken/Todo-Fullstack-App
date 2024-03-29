@@ -26,3 +26,20 @@ export interface ProjectData {
   progress: number;
   members: UserData[];
 }
+
+// TESTING
+export interface TestProjectData {
+  _id: string;
+  name: string;
+  description: string;
+  status: string;
+  startDate: string;
+  endDate: string;
+  progress: number;
+  members: TestUserData[];
+}
+
+interface TestUserData {
+  _id: string;
+  name: string;
+}

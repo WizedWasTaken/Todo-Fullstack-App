@@ -1,4 +1,4 @@
-import { ProjectsTable } from '@/components/pages/dashboard/projects/projectsTable';
+import { ProjectsTable } from '@/components/pages/dashboard/projectsTable';
 
 /*
  * Projects page
