@@ -34,7 +34,8 @@
     "react": "^18",
     "react-dom": "^18",
     "sass": "^1.71.1",
-    "tailwind-merge": "^2.2.1",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7",
     "vercel": "^33.5.4"
   },
   "devDependencies": {

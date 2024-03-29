@@ -4,10 +4,11 @@ import { FrontpageCards } from '@/lib/utils/cards';
 import PriceCards from '@/components/pages/frontpage/priceCards';
 import { HoverEffect } from '@/components/ui-library/card-hover-effect';
 import Reviews from '@/components/pages/frontpage/reviews';
+import { Spotlight } from '@/components/ui-library/spotlight';
 
 /*
-* Meta data for frontpage component
-*/
+ * Meta data for frontpage component
+ */
 export const metadata: Metadata = {
   title: 'Forside | Todo App',
 };
@@ -22,6 +23,10 @@ export default function Home() {
       <section className='flex w-full justify-center items-center'>
         <div>
           <p className='text-center text-1xl font-semibold'>Velkommen til</p>
+          <Spotlight
+            className='-top-20 left-0 md:left-80 md:-top-60'
+            fill='white'
+          />
           <h1 className='text-center text-3xl m-4 font-bold antialiased'>
             Todo App
           </h1>

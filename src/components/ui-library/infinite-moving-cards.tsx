@@ -23,17 +23,10 @@ export const InfiniteMovingCards = ({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const scrollerRef = React.useRef<HTMLUListElement>(null);
 
-  // TODO: Find a way to make this lightmode aswell.
   useEffect(() => {
     addAnimation();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const [start, setStart] = useState(false);
-
-  /**
-   * Adds the animation to the scroller
-   * Duplicates the items in the scroller to create the infinite effect
-   */
   function addAnimation() {
     if (containerRef.current && scrollerRef.current) {
       const scrollerContent = Array.from(scrollerRef.current.children);
@@ -87,7 +80,7 @@ export const InfiniteMovingCards = ({
       <ul
         ref={scrollerRef}
         className={cn(
-          'flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap',
+          ' flex min-w-full shrink-0 gap-4 py-4 w-max flex-nowrap',
           start && 'animate-scroll ',
           pauseOnHover && 'hover:[animation-play-state:paused]'
         )}

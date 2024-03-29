@@ -119,24 +119,26 @@ export default function HamburgerMenu() {
           }`}
           onClick={toggleHamburgerMenu}
         >
-          {normalMenuItems.map((item, index) => {
-            return (
-              <li key={index}>
-                <Link href={item.path}>
-                  <div
-                    className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto px-2 py-2 rounded-md ${
-                      pathname === item.path
-                        ? 'border-r-4 border-r-blue-500'
-                        : 'text-primary-500'
-                    }`}
-                  >
-                    <p className='text-secondary-300'>{item.name}</p>
-                  </div>
-                </Link>
-              </li>
-            );
-          })}
+          {menuOpen &&
+            normalMenuItems.map((item, index) => {
+              return (
+                <li key={index}>
+                  <Link href={item.path}>
+                    <div
+                      className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto px-2 py-2 rounded-md ${
+                        pathname === item.path
+                          ? 'border-r-4 border-r-blue-500'
+                          : 'text-primary-500'
+                      }`}
+                    >
+                      <p className='text-secondary-300'>{item.name}</p>
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
           {!session &&
+            menuOpen &&
             loginRegisterMenuItems.map((item, index) => {
               return (
                 <li key={index}>
@@ -155,6 +157,7 @@ export default function HamburgerMenu() {
               );
             })}
           {session &&
+            menuOpen &&
             profileMenuItems.map((item, index) => {
               return (
                 <li key={index}>
