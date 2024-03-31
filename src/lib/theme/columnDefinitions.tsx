@@ -271,7 +271,7 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
   {
     id: 'actions',
     cell: ({ row }) => {
-      const user = row.original;
+      const project = row.original;
 
       return (
         <DropdownMenu>
@@ -280,20 +280,15 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
               variant='ghost'
               className='h-8 w-8 p-0'
             >
-              <span className='sr-only'>Open menu</span>
+              <span className='sr-only'>Åben menu</span>
               <MoreHorizontal className='h-4 w-4' />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align='end'>
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(user._id)}
-            >
-              Kopier bruger ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Se bruger</DropdownMenuItem>
-            <DropdownMenuItem>Se bruger detaljer</DropdownMenuItem>
+            <DropdownMenuLabel>Muligheder</DropdownMenuLabel>
+            <DropdownMenuItem>Forlad projekt</DropdownMenuItem>
+            <DropdownMenuItem>Se projekt</DropdownMenuItem>
+            <DropdownMenuItem>Se projekt detaljer</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
