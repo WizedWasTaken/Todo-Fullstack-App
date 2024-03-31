@@ -1,7 +1,7 @@
 'use client';
 
 // Imports
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { DataTable } from '@/components/data-table/data-table';
 import { testProjects } from '@/components/pages/dashboard/testProjects';
 import { ProjectTableColumns } from '@/lib/theme/columnDefinitions';
@@ -13,9 +13,11 @@ import { ProjectTableColumns } from '@/lib/theme/columnDefinitions';
  */
 export function ProjectsTable() {
   return (
-    <DataTable
-      data={testProjects}
-      columns={ProjectTableColumns}
-    />
+    <>
+      <DataTable
+        data={testProjects}
+        columns={ProjectTableColumns}
+      />
+    </>
   );
 }

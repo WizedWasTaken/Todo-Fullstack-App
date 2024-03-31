@@ -1,9 +1,9 @@
 'use client';
 
 import { DataTablePagination } from '@/components/data-table/data-table-pagination';
+import { DataTableViewOptions } from '@/components/data-table/data-table-view-options';
 
 import * as React from 'react';
-import { Button } from '@/components/ui-library/button';
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -66,6 +66,7 @@ export function DataTable<TData, TValue>({
 
   return (
     <>
+      <DataTableViewOptions table={table} />
       <div className='rounded-md border w-full'>
         <Table>
           {table.getHeaderGroups().map((headerGroup) => (
