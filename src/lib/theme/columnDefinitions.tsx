@@ -148,6 +148,7 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
     id: 'select',
     header: ({ table }) => (
       <Checkbox
+        className='mr-auto'
         checked={
           table.getIsAllPageRowsSelected() ||
           (table.getIsSomePageRowsSelected() && 'indeterminate')

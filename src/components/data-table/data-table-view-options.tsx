@@ -37,24 +37,24 @@ export function DataTableViewOptions<TData>({
           onChange={(event) =>
             table.getColumn(sortName)?.setFilterValue(event.target.value)
           }
-          className='max-w-sm'
+          className='max-w-sm h-10 w-full lg:w-[250px]'
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button
               variant='outline'
               size='lg'
-              className='ml-auto hidden h-8 lg:flex'
+              className='ml-auto hidden h-10 lg:flex'
             >
               <MixerHorizontalIcon className='mr-2 h-4 w-4' />
-              Skift
+              Filter
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent
             align='end'
             className='w-[150px]'
           >
-            <DropdownMenuLabel>Skift sorterings mulighed</DropdownMenuLabel>
+            <DropdownMenuLabel>Filter</DropdownMenuLabel>
             <DropdownMenuSeparator />
             {table
               .getAllColumns()
@@ -83,17 +83,17 @@ export function DataTableViewOptions<TData>({
           <Button
             variant='outline'
             size='lg'
-            className='ml-auto hidden h-8 lg:flex'
+            className='ml-auto hidden h-10 lg:flex'
           >
             <MixerHorizontalIcon className='mr-2 h-4 w-4' />
-            Se
+            Gem & Vis
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align='end'
           className='w-[150px]'
         >
-          <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+          <DropdownMenuLabel>Gem & Vis</DropdownMenuLabel>
           <DropdownMenuSeparator />
           {table
             .getAllColumns()

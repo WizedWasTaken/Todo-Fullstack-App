@@ -16,6 +16,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
+import { Skeleton } from '@/components/ui-library/skeleton';
 
 import {
   Table,
@@ -104,12 +105,14 @@ export function DataTable<TData, TValue>({
               ))
             ) : (
               <TableRow>
-                <TableCell
-                  colSpan={columns.length}
-                  className='h-24 text-center'
-                >
-                  Ingen resultater. Prøv igen senere.
-                </TableCell>
+                {columns.map((column) => (
+                  <TableCell
+                    key={column.id}
+                    className='p-1'
+                  >
+                    <Skeleton className='h-7 w-full' />
+                  </TableCell>
+                ))}
               </TableRow>
             )}
           </TableBody>
