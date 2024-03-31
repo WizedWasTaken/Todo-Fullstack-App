@@ -10,6 +10,7 @@ import {
   profileMenuItems,
 } from '@/lib/utils/menuItems';
 import { useSession } from 'next-auth/react';
+import { Button } from '@/components/ui-library/button';
 
 /*
  * HTML for the hamburger menu in the nav bar.
@@ -121,17 +122,15 @@ export default function HamburgerMenu() {
             normalMenuItems.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link href={item.path}>
-                    <div
-                      className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto px-2 py-2 rounded-md ${
-                        pathname === item.path
-                          ? 'border-r-4 border-r-blue-500'
-                          : 'text-primary-500'
-                      }`}
-                    >
-                      <p className='text-secondary-300'>{item.name}</p>
-                    </div>
-                  </Link>
+                  <Button
+                    className={` ${
+                      pathname === item.path
+                        ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
+                        : ''
+                    }`}
+                  >
+                    <Link href={item.path}>{item.name}</Link>
+                  </Button>
                 </li>
               );
             })}
@@ -140,17 +139,15 @@ export default function HamburgerMenu() {
             loginRegisterMenuItems.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link href={item.path}>
-                    <div
-                      className={` dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto p-2 py-2 rounded-md ${
-                        pathname === item.path
-                          ? 'border-r-4 border-r-blue-500'
-                          : 'text-primary-500'
-                      }`}
-                    >
-                      <p className='text-secondary-300'>{item.name}</p>
-                    </div>
-                  </Link>
+                  <Button
+                    className={` ${
+                      pathname === item.path
+                        ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
+                        : ''
+                    }`}
+                  >
+                    <Link href={item.path}>{item.name}</Link>
+                  </Button>
                 </li>
               );
             })}
@@ -159,17 +156,15 @@ export default function HamburgerMenu() {
             profileMenuItems.map((item, index) => {
               return (
                 <li key={index}>
-                  <Link href={item.path}>
-                    <div
-                      className={`dark:bg-gray-800 dark:hover:bg-gray-700 dark:text-white text-black bg-gray-200 hover:bg-gray-300 w-24 ml-auto p-2 py-2 rounded-md ${
-                        pathname === item.path
-                          ? 'border-r-4 border-r-blue-500'
-                          : 'text-primary-500'
-                      }`}
-                    >
-                      <p className='text-secondary-300'>{item.name}</p>
-                    </div>
-                  </Link>
+                  <Button
+                    className={` ${
+                      pathname === item.path
+                        ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
+                        : ''
+                    }`}
+                  >
+                    <Link href={item.path}>{item.name}</Link>
+                  </Button>
                 </li>
               );
             })}

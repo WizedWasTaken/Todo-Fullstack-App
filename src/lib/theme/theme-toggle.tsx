@@ -1,6 +1,7 @@
 'use client';
 
 import { useTheme } from 'next-themes';
+import { Button } from '@/components/ui-library/button';
 
 // Const instead of function for none hydration error. This works for some reason 💀
 /**
@@ -14,13 +15,13 @@ const ThemeToggle = () => {
   };
 
   return (
-    <button
+    <Button
       onClick={toggleTheme}
-      className='dark:bg-gray-700 dark:hover:bg-gray-600 dark:text-white text-black bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-md'
     >
       {theme === 'light' ? '🌙' : '🌞'}
-    </button>
+    </Button>
   );
+  
 };
 
 export default ThemeToggle;
