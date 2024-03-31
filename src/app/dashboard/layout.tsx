@@ -19,7 +19,7 @@ export const metadata: Metadata = {
  */
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (
-    <div className='flex flex-grow'>
+    <div className='relative flex flex-grow'>
       <SideNav />
       <div className='relative flex flex-col flex-grow'>
         <AdminBreadcrumb />
