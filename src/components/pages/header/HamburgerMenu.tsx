@@ -123,6 +123,7 @@ export default function HamburgerMenu() {
               return (
                 <li key={index}>
                   <Button
+                    asChild
                     className={` ${
                       pathname === item.path
                         ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
@@ -140,6 +141,7 @@ export default function HamburgerMenu() {
               return (
                 <li key={index}>
                   <Button
+                    asChild
                     className={` ${
                       pathname === item.path
                         ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
@@ -157,6 +159,7 @@ export default function HamburgerMenu() {
               return (
                 <li key={index}>
                   <Button
+                    asChild
                     className={` ${
                       pathname === item.path
                         ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
