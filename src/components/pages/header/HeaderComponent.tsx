@@ -12,9 +12,9 @@ export default function Header() {
       <HamburgerMenu />
       <div className='flex md:flex-row items-center justify-center w-full relative mb-3'>
         <h1 className='w-full text-center font-bold text-xl'>To-do App</h1>
-        <div className='absolute top-0 right-0'>
+        {/* <div className='absolute top-0 right-0'> */}
           <ThemeToggle />
-        </div>
+        {/* </div> */}
       </div>
       <NavBar />
     </header>
