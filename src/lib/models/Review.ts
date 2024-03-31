@@ -1,9 +1,12 @@
-import mongoose from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 
 const reviewSchema = new mongoose.Schema({
-  userId: { type: String, required: true },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
   rating: { type: Number, required: true },
-  review: { type: String, required: true },
+  content: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
 });
 

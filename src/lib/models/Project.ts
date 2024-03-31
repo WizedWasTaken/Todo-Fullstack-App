@@ -8,7 +8,6 @@ const ProjectSchema = new Schema({
   },
   description: {
     type: String,
-    required: false,
   },
   startDate: {
     type: Date,
@@ -19,8 +18,8 @@ const ProjectSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ['active', 'completed', 'paused', 'cancelled'],
-    default: 'active',
+    enum: ['aktiv', 'færdig', 'pause', 'annuleret'],
+    default: 'aktiv',
   },
   members: [
     {
