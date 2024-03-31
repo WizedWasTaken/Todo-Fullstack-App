@@ -80,7 +80,7 @@ export default function LoginPage() {
       >
         <div className='flex gap-5'>
           <LabelInputContainer className='md:mb-2'>
-            <Label htmlFor='email'>Email Addresse</Label>
+            <Label htmlFor='email'>E-mailadresse</Label>
             <Input
               name='email'
               id='email'
@@ -116,13 +116,13 @@ export default function LoginPage() {
           <p className='text-neutral-600 dark:text-neutral-300 text-sm text-center'>
             Eller opret en konto med
           </p>
-          <div className='flex flex-row w-full md:max-w-[40%] md:mx-auto justify-around md:justify-center gap-2 md:space-x-4 md:space-y-0'>
+          <div className='flex flex-col md:flex-row w-full md:max-w-[40%] md:mx-auto justify-around md:justify-center gap-2 md:space-x-4 md:space-y-0'>
             {logInOptions.map((option, index) => (
               <button
                 key={index}
                 onClick={() => signIn(option.id, { callbackUrl: '/dashboard' })}
                 disabled={session ? true : false}
-                className='relative group/btn flex disabled:cursor-not-allowed space-x-2 items-center justify-start px-4 text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
+                className='relative group/btn justify-center flex w-full md:w-1/3 disabled:cursor-not-allowed space-x-2 items-center md:justify-start px-4 text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
               >
                 {option.icon}
                 <span className='text-neutral-700 dark:text-neutral-300 text-sm'>

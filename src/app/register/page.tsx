@@ -129,7 +129,7 @@ export default function RegisterPage() {
           </LabelInputContainer>
         </div>
         <LabelInputContainer className='md:mb-2'>
-          <Label htmlFor='email'>Email Addresse</Label>
+          <Label htmlFor='email'>E-mailadresse</Label>
           <Input
             name='email'
             id='email'
