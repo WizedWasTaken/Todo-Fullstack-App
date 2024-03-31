@@ -7,7 +7,7 @@
  */
 export default function Dashboard() {
     return (
-      <div className='flex h-full flex-col justify-center items-center flex-grow'>
+      <div className='flex h-full w-full flex-col justify-center items-center'>
         <h1 className='text-2xl font-semibold'>Dashboard</h1>
         <p className='text-center'>
           Velkommen til din dashboard. Her kan du se en oversigt over dine opgaver
