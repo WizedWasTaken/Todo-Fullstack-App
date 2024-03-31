@@ -67,8 +67,10 @@ export default function HamburgerMenu() {
   useEffect(() => {
     const scrolledHeight = window.scrollY;
     if (hamburgerRef.current) {
-      hamburgerRef.current.style.height = `${mainContainerHeight - scrolledHeight}px`;
-      hamburgerRef.current.style.marginTop = `${headerHeight + 2}px`;
+      hamburgerRef.current.style.height = `${mainContainerHeight}px`;
+      hamburgerRef.current.style.marginTop = `${
+        headerHeight + 2 - scrolledHeight
+      }px`;
     }
   });
 
