@@ -19,7 +19,7 @@ import { Checkbox } from '@/components/ui-library/checkbox';
 import { MoreHorizontal } from 'lucide-react';
 
 // Types
-import { ProjectData, UserData } from '@/lib/types';
+import { TestProjectData, UserData } from '@/lib/types';
 
 // TODO: Add row actions for managing user. For example, delete.
 export const UserTableColumns: ColumnDef<UserData>[] = [
@@ -143,7 +143,7 @@ export const UserTableColumns: ColumnDef<UserData>[] = [
 /*
  * Projects table
  */
-export const ProjectTableColumns: ColumnDef<ProjectData>[] = [
+export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
   {
     id: 'select',
     header: ({ table }) => (
