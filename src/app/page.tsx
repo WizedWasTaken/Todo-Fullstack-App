@@ -22,7 +22,7 @@ export default function Home() {
     <main className='flex flex-col flex-grow items-center justify-center container mx-auto gap-20 my-20'>
       <section className='flex w-full justify-center items-center flex-col'>
         <Spotlight
-          className='absolute md:-top-60 top-1/2'
+          className='absolute hidden md:block md:-top-60 top-1/2'
           fill='white'
         />
         <p className='text-center text-1xl font-semibold'>Velkommen til</p>

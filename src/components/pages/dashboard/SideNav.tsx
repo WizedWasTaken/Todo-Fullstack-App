@@ -13,7 +13,8 @@ export default function SideNav() {
         <ul className='flex flex-col gap-3 p-5'>
           {dashboardMenuItems.map((link: any) => (
             <li key={link.name}>
-              <Button className='w-full'>
+              
+              <Button className='w-full' asChild>
                 <Link
                   href={link.path}
                   

@@ -96,7 +96,7 @@ export default function RegisterPage() {
   ];
 
   return (
-    <main className='flex flex-col flex-grow items-center justify-center w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input'>
+    <main className='flex flex-col flex-grow items-center justify-center w-screen mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input'>
       <h2 className='font-bold text-xl text-neutral-800 dark:text-neutral-200 text-center'>
         Velkommen til To-do App 🚀
       </h2>
@@ -105,11 +105,11 @@ export default function RegisterPage() {
       </p>
 
       <form
-        className='my-6'
+        className='my-6 flex flex-col gap-3'
         onSubmit={registerUser}
       >
-        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
-          <LabelInputContainer className='mb-3'>
+        <div className='flex flex-row md:space-y-0 space-x-2 md:space-x-2'>
+          <LabelInputContainer className='md:mb-3'>
             <Label htmlFor='firstname'>Fornavn</Label>
             <Input
               name='firstname'
@@ -118,7 +118,7 @@ export default function RegisterPage() {
               type='text'
             />
           </LabelInputContainer>
-          <LabelInputContainer className='mb-3'>
+          <LabelInputContainer className='md:mb-3'>
             <Label htmlFor='lastname'>Efternavn</Label>
             <Input
               name='lastname'
@@ -128,7 +128,7 @@ export default function RegisterPage() {
             />
           </LabelInputContainer>
         </div>
-        <LabelInputContainer className='mb-2'>
+        <LabelInputContainer className='md:mb-2'>
           <Label htmlFor='email'>Email Addresse</Label>
           <Input
             name='email'
@@ -137,7 +137,7 @@ export default function RegisterPage() {
             type='email'
           />
         </LabelInputContainer>
-        <LabelInputContainer className='mb-5'>
+        <LabelInputContainer className='md:mb-4'>
           <Label htmlFor='password'>Kodeord</Label>
           <Input
             name='password'
@@ -146,7 +146,7 @@ export default function RegisterPage() {
             type='password'
           />
         </LabelInputContainer>
-        <LabelInputContainer className='mb-6'>
+        <LabelInputContainer className='mb-4'>
           <Label htmlFor='repeatPassword'>Gentag kodeord</Label>
           <Input
             name='repeatPassword'
@@ -168,18 +168,18 @@ export default function RegisterPage() {
       </form>
 
       {/* TODO: Can i clean this code with a new function??? */}
-      <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
-        <div className='flex flex-col space-y-4'>
+      <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4 w-full'>
+        <div className='flex flex-col space-y-4 w-full'>
           <p className='text-neutral-600 dark:text-neutral-300 text-sm text-center'>
             Eller opret en konto med
           </p>
-          <div className='flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0'>
+          <div className='flex flex-col md:flex-row w-full md:max-w-[40%] md:mx-auto justify-around md:justify-center gap-2 md:space-x-4 md:space-y-0'>
             {logInOptions.map((option, index) => (
               <button
                 key={index}
                 onClick={() => signIn(option.id, { callbackUrl: '/dashboard' })}
                 disabled={session ? true : false}
-                className='relative group/btn flex disabled:cursor-not-allowed space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
+                className='relative group/btn justify-center flex w-full md:w-1/3 disabled:cursor-not-allowed space-x-2 items-center md:justify-start px-4 text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
               >
                 {option.icon}
                 <span className='text-neutral-700 dark:text-neutral-300 text-sm'>

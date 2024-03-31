@@ -75,33 +75,24 @@ export default function LoginPage() {
       </p>
 
       <form
-        className='my-6'
+        className='my-6 flex flex-col gap-2'
         onSubmit={registerUser}
       >
-        <LabelInputContainer className='mb-2'>
-          <Label htmlFor='email'>Email Addresse</Label>
-          <Input
-            name='email'
-            id='email'
-            placeholder='din@email.com'
-            type='email'
-          />
-        </LabelInputContainer>
-        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2'>
-          <LabelInputContainer className='mb-5'>
+        <div className='flex gap-5'>
+          <LabelInputContainer className='md:mb-2'>
+            <Label htmlFor='email'>Email Addresse</Label>
+            <Input
+              name='email'
+              id='email'
+              placeholder='din@email.com'
+              type='email'
+            />
+          </LabelInputContainer>
+          <LabelInputContainer className='md:mb-4'>
             <Label htmlFor='password'>Kodeord</Label>
             <Input
               name='password'
               id='password'
-              placeholder='••••••••'
-              type='password'
-            />
-          </LabelInputContainer>
-          <LabelInputContainer className='mb-6'>
-            <Label htmlFor='repeatPassword'>Gentag kodeord</Label>
-            <Input
-              name='repeatPassword'
-              id='repeatPassword'
               placeholder='••••••••'
               type='password'
             />
@@ -113,25 +104,25 @@ export default function LoginPage() {
           type='submit'
           disabled={session ? true : false}
         >
-          Log ind &rarr;
+          Opret Konto &rarr;
           {!session && <BottomGradient />}
         </button>
         <div className='bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent mt-8 mb-2 h-[1px] w-full' />
       </form>
 
       {/* TODO: Can i clean this code with a new function??? */}
-      <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4'>
-        <div className='flex flex-col space-y-4'>
+      <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4 w-full'>
+        <div className='flex flex-col space-y-4 w-full'>
           <p className='text-neutral-600 dark:text-neutral-300 text-sm text-center'>
-            Eller log ind med
+            Eller opret en konto med
           </p>
-          <div className='flex flex-col space-y-4 md:flex-row md:space-x-4 md:space-y-0'>
+          <div className='flex flex-row w-full md:max-w-[40%] md:mx-auto justify-around md:justify-center gap-2 md:space-x-4 md:space-y-0'>
             {logInOptions.map((option, index) => (
               <button
                 key={index}
                 onClick={() => signIn(option.id, { callbackUrl: '/dashboard' })}
                 disabled={session ? true : false}
-                className='relative group/btn flex disabled:cursor-not-allowed space-x-2 items-center justify-start px-4 w-full text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
+                className='relative group/btn flex disabled:cursor-not-allowed space-x-2 items-center justify-start px-4 text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
               >
                 {option.icon}
                 <span className='text-neutral-700 dark:text-neutral-300 text-sm'>
