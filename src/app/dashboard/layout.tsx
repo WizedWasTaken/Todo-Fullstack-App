@@ -23,7 +23,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
       <SideNav />
       <div className='relative flex-grow'>
         <AdminBreadcrumb />
-        <div className='flex-grow px-3 mt-8'>{children}</div>
+        <div className='flex-grow px-5 mt-8'>{children}</div>
       </div>
     </div>
   );

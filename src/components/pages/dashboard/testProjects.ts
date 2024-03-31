@@ -8,7 +8,7 @@ export const testProjects: TestProjectData[] = [
       'A comprehensive redesign of our main website to improve UX and conversion rates.',
     status: 'In Progress',
     startDate: '2024-01-01',
-    endDate: '2024-06-30',
+    endDate: '',
     progress: 45,
     members: [
       { _id: 'user1', name: 'Alice' },
@@ -22,7 +22,7 @@ export const testProjects: TestProjectData[] = [
       'Launching our new product line including market analysis, branding, and marketing strategy.',
     status: 'Planning',
     startDate: '2024-02-15',
-    endDate: '2024-12-01',
+    endDate: '',
     progress: 10,
     members: [
       { _id: 'user3', name: 'Charlie' },
@@ -36,7 +36,7 @@ export const testProjects: TestProjectData[] = [
       'Development of internal tools for project management and productivity improvement.',
     status: 'Completed',
     startDate: '2023-05-01',
-    endDate: '2024-01-15',
+    endDate: '',
     progress: 100,
     members: [
       { _id: 'user5', name: 'Eve' },
@@ -148,7 +148,7 @@ export const testProjects: TestProjectData[] = [
       'Enhancing our e-commerce platform to improve user experience and sales conversion.',
     status: 'In Progress',
     startDate: '2024-01-10',
-    endDate: '2024-08-10',
+    endDate: '',
     progress: 50,
     members: [
       { _id: 'user21', name: 'Uma' },
@@ -246,7 +246,7 @@ export const testProjects: TestProjectData[] = [
       'Developing a sustainability reporting system to track our environmental impact and progress towards sustainability goals.',
     status: 'In Progress',
     startDate: '2024-03-10',
-    endDate: '2024-12-10',
+    endDate: '',
     progress: 35,
     members: [
       { _id: 'user35', name: 'Irene' },

@@ -34,7 +34,7 @@ export function DataTableColumnHeader<TData, TValue>({
   return (
     <div
       className={cn(
-        'flex items-center justify-end w-full text-right space-x-2',
+        'flex items-center justify-end text-right space-x',
         className
       )}
     >

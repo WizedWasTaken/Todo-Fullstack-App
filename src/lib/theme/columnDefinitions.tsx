@@ -202,6 +202,7 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
     ),
     cell: ({ row }) => {
       const name: string = row.getValue('status');
+
       return <div className={'text-right font-medium'}>{name}</div>;
     },
   },
@@ -215,7 +216,7 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
     ),
     cell: ({ row }) => {
       const name: string = row.getValue('startDate');
-      const date = new Date(name).toLocaleDateString();
+      const date = new Date(name).toDateString();
       return <div className={'text-right font-medium'}>{date}</div>;
     },
   },
@@ -229,7 +230,14 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
     ),
     cell: ({ row }) => {
       const name: string = row.getValue('endDate');
-      const date = new Date(name).toLocaleDateString();
+      const checkName = name.trim();
+      let date: string;
+      // Hvis name er null, undefined eller tom.
+      if (checkName.length != 0) {
+        date = new Date(name).toDateString();
+      } else {
+        date = 'Ikke færdig';
+      }
       return <div className={'text-right font-medium'}>{date}</div>;
     },
   },

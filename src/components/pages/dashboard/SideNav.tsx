@@ -7,9 +7,9 @@ import { dashboardMenuItems } from '@/lib/utils/menuItems'; // Menu items for th
  */
 export default function SideNav() {
   return (
-    <aside className='min-w-52 mr-2 border-r-2 max-h-fit overflow-y-auto border-slate-400'>
+    <aside className='min-w-52 border-r-2 max-h-fit overflow-y-auto border-slate-400'>
       <nav>
-        <ul className='flex flex-col gap-3 py-5'>
+        <ul className='flex flex-col ml-2 gap-3 py-5'>
           {dashboardMenuItems.map((link: any) => (
             <li key={link.name}>
               <Link
