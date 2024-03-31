@@ -38,12 +38,12 @@ export default function SideNav() {
         ></div>
       </div>
       <aside
-        className={`border-r-2 overflow-y-auto border-slate-400 transition ${
-          menuOpen ? 'w-[150vw]' : 'w-0 border-r-0'
+        className={`border-r-2 overflow-y-auto border-slate-400 transition absolute pt-5 h-full bg-primary/20 left-0 top-0 ${
+          menuOpen ? 'w-[60vw]' : 'w-0 border-r-0'
         }`}
       >
         <nav>
-          <ul className='flex flex-col gap-3 p-5 relative'>
+          <ul className='flex flex-col gap-3 p-5 h-full'>
             {dashboardMenuItems.map((link: any) => (
               <li key={link.name}>
                 <Button
