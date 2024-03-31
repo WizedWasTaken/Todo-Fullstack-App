@@ -39,7 +39,7 @@ export default function SideNav() {
       </div>
       <aside
         className={`border-r-2 overflow-y-auto border-slate-400 transition ${
-          menuOpen ? 'w-[70vh]' : 'w-0 border-r-0'
+          menuOpen ? 'w-[150vw]' : 'w-0 border-r-0'
         }`}
       >
         <nav>
