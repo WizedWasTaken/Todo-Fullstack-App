@@ -126,6 +126,7 @@ export default function HamburgerMenu() {
               return (
                 <li key={index}>
                   <Button
+                    size={'lg'}
                     asChild
                     className={` ${
                       pathname === item.path
@@ -144,6 +145,7 @@ export default function HamburgerMenu() {
               return (
                 <li key={index}>
                   <Button
+                    size={'lg'}
                     asChild
                     className={` ${
                       pathname === item.path
@@ -162,6 +164,7 @@ export default function HamburgerMenu() {
               return (
                 <li key={index}>
                   <Button
+                    size={'lg'}
                     asChild
                     className={` ${
                       pathname === item.path

@@ -104,94 +104,99 @@ export default function RegisterPage() {
         Opret en konto for at komme i gang
       </p>
 
-      <form
-        className='my-6 flex flex-col gap-3'
-        onSubmit={registerUser}
-      >
-        <div className='flex flex-row md:space-y-0 space-x-2 md:space-x-2'>
-          <LabelInputContainer className='md:mb-3'>
-            <Label htmlFor='firstname'>Fornavn</Label>
-            <Input
-              name='firstname'
-              id='firstname'
-              placeholder='John'
-              type='text'
-            />
-          </LabelInputContainer>
-          <LabelInputContainer className='md:mb-3'>
-            <Label htmlFor='lastname'>Efternavn</Label>
-            <Input
-              name='lastname'
-              id='lastname'
-              placeholder='Doe'
-              type='text'
-            />
-          </LabelInputContainer>
-        </div>
-        <LabelInputContainer className='md:mb-2'>
-          <Label htmlFor='email'>E-mailadresse</Label>
-          <Input
-            name='email'
-            id='email'
-            placeholder='din@email.com'
-            type='email'
-          />
-        </LabelInputContainer>
-        <LabelInputContainer className='md:mb-4'>
-          <Label htmlFor='password'>Kodeord</Label>
-          <Input
-            name='password'
-            id='password'
-            placeholder='••••••••'
-            type='password'
-          />
-        </LabelInputContainer>
-        <LabelInputContainer className='mb-4'>
-          <Label htmlFor='repeatPassword'>Gentag kodeord</Label>
-          <Input
-            name='repeatPassword'
-            id='repeatPassword'
-            placeholder='••••••••'
-            type='password'
-          />
-        </LabelInputContainer>
-
-        <button
-          className='bg-gradient-to-br relative group/btn disabled:cursor-not-allowed from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]'
-          type='submit'
-          disabled={session ? true : false}
+      <div>
+        <form
+          className='my-6 flex flex-col gap-3'
+          onSubmit={registerUser}
         >
-          Opret Konto &rarr;
-          {!session && <BottomGradient />}
-        </button>
-        <div className='bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent mt-8 mb-2 h-[1px] w-full' />
-      </form>
+          <div className='flex flex-row md:space-y-0 space-x-2 md:space-x-2'>
+            <LabelInputContainer className='md:mb-3'>
+              <Label htmlFor='firstname'>Fornavn</Label>
+              <Input
+                name='firstname'
+                id='firstname'
+                placeholder='John'
+                type='text'
+              />
+            </LabelInputContainer>
+            <LabelInputContainer className='md:mb-3'>
+              <Label htmlFor='lastname'>Efternavn</Label>
+              <Input
+                name='lastname'
+                id='lastname'
+                placeholder='Doe'
+                type='text'
+              />
+            </LabelInputContainer>
+          </div>
+          <LabelInputContainer className='md:mb-2'>
+            <Label htmlFor='email'>E-mailadresse</Label>
+            <Input
+              name='email'
+              id='email'
+              placeholder='din@email.com'
+              type='email'
+            />
+          </LabelInputContainer>
+          <LabelInputContainer className='md:mb-4'>
+            <Label htmlFor='password'>Kodeord</Label>
+            <Input
+              name='password'
+              id='password'
+              placeholder='••••••••'
+              type='password'
+            />
+          </LabelInputContainer>
+          <LabelInputContainer className='mb-4'>
+            <Label htmlFor='repeatPassword'>Gentag kodeord</Label>
+            <Input
+              name='repeatPassword'
+              id='repeatPassword'
+              placeholder='••••••••'
+              type='password'
+            />
+          </LabelInputContainer>
 
-      {/* TODO: Can i clean this code with a new function??? */}
-      <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4 w-full'>
-        <div className='flex flex-col space-y-4 w-full'>
-          <p className='text-neutral-600 dark:text-neutral-300 text-sm text-center'>
-            Eller opret en konto med
-          </p>
-          <div className='flex flex-col md:flex-row w-full md:max-w-[40%] md:mx-auto justify-around md:justify-center gap-2 md:space-x-4 md:space-y-0'>
-            {logInOptions.map((option, index) => (
-              <button
-                key={index}
-                onClick={() => signIn(option.id, { callbackUrl: '/dashboard' })}
-                disabled={session ? true : false}
-                className='relative group/btn justify-center flex w-full md:w-1/3 disabled:cursor-not-allowed space-x-2 items-center md:justify-start px-4 text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
-              >
-                {option.icon}
-                <span className='text-neutral-700 dark:text-neutral-300 text-sm'>
-                  {option.name}
-                </span>
-                {!session && <BottomGradient />}
-              </button>
-            ))}
+          <button
+            className='bg-gradient-to-br relative group/btn disabled:cursor-not-allowed from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]'
+            type='submit'
+            disabled={session ? true : false}
+          >
+            Opret Konto &rarr;
+            {!session && <BottomGradient />}
+          </button>
+          <div className='bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent mt-8 mb-2 h-[1px] w-full' />
+        </form>
+
+        {/* TODO: Can i clean this code with a new function??? */}
+        <div className='flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4 w-full'>
+          <div className='flex flex-col space-y-4 w-full'>
+            <p className='text-neutral-600 dark:text-neutral-300 text-sm text-center'>
+              Eller opret en konto med
+            </p>
+            <div className='flex flex-col md:flex-row w-full md:mx-auto justify-around md:justify-center gap-2 md:space-x-4 md:space-y-0'>
+              {logInOptions.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() =>
+                    signIn(option.id, { callbackUrl: '/dashboard' })
+                  }
+                  disabled={session ? true : false}
+                  className='relative group/btn justify-center flex w-full md:w-1/3 disabled:cursor-not-allowed space-x-2 items-center md:justify-start px-4 text-black rounded-md h-10 font-medium shadow-input bg-gray-50 dark:bg-zinc-900 dark:shadow-[0px_0px_1px_1px_var(--neutral-800)]'
+                >
+                  {option.icon}
+                  <span className='text-neutral-700 dark:text-neutral-300 text-sm'>
+                    {option.name}
+                  </span>
+                  {!session && <BottomGradient />}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
+
+        <div>{session && <LoggedInAlert />}</div>
       </div>
-      <div>{session && <LoggedInAlert />}</div>
     </main>
   );
 }

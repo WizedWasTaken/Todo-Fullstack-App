@@ -22,10 +22,11 @@ async function createNewReview(
 ) {
   await dbConnect();
 
-  const { userId, rating, review } = req.body;
+  const { author, rating, content } = req.body;
 
   try {
-    const existingReview = await Review.findOne({ userId });
+    console.log(req.body);
+    const existingReview = await Review.findOne({ author });
     if (existingReview) {
       return res
         .status(400)
@@ -36,14 +37,15 @@ async function createNewReview(
       return res.status(400).json({ message: 'Rating exceeds limit.' });
     }
 
-    if (review.length > 1000) {
+    console.log(content.length);
+    if (content.length > 1000) {
       return res.status(400).json({ message: 'Review length exceeds limit.' });
     }
 
     const newReview = await Review.create({
-      userId,
+      author,
       rating,
-      review,
+      content,
     });
 
     res.status(201).json(newReview);

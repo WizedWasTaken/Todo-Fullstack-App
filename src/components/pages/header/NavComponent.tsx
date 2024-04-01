@@ -26,6 +26,7 @@ export default function NavBar() {
               <li key={index}>
                 <Button
                   asChild
+                  size={'lg'}
                   className={` ${
                     pathname === item.path
                       ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
@@ -45,6 +46,7 @@ export default function NavBar() {
                 <li key={index}>
                   <Button
                     asChild
+                    size={'lg'}
                     className={` ${
                       pathname === item.path
                         ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '
@@ -65,6 +67,7 @@ export default function NavBar() {
                 <li key={index}>
                   <Button
                     asChild
+                    size={'lg'}
                     className={` ${
                       pathname === item.path
                         ? 'border-b-4 border-b-blue-800 dark:border-b-blue-500 '

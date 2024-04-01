@@ -10,9 +10,10 @@ export interface UserData {
 
 export interface ReviewData {
   _id: string;
-  userId: number;
+  author: UserData;
   rating: number;
-  review: string;
+  content: string;
+  title: string;
   createdAt: Date;
 }
 

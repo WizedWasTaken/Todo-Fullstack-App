@@ -23,8 +23,8 @@ export default function Reviews() {
 
   return (
     <InfiniteMovingCards
-      direction='right'
-      speed='fast'
+      direction='left'
+      speed='normal'
       pauseOnHover={false}
       items={reviews}
       className='py-10 w-full overflow-hidden'
@@ -43,8 +43,9 @@ async function fetchReviews() {
     // TODO: Uses UserID currently. Fix this to use the actual name of the user
     return data.map((review: ReviewData) => ({
       title: 'Kunde',
-      quote: review.review,
-      name: review.userId,
+      quote: review.content,
+      name: review.author.name,
+      rating: review.rating,
     }));
   } catch (error) {
     return;

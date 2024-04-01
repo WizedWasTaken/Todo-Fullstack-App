@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils/classNames';
+import { IconGitMerge } from '@tabler/icons-react';
 import React, { useEffect, useState } from 'react';
 
 export const InfiniteMovingCards = ({
@@ -14,6 +15,7 @@ export const InfiniteMovingCards = ({
     quote: string;
     name: string;
     title: string;
+    rating: number;
   }[];
   direction?: 'left' | 'right';
   speed?: 'fast' | 'normal' | 'slow';
@@ -107,9 +109,21 @@ export const InfiniteMovingCards = ({
                   <span className=' text-sm leading-[1.6] text-gray-400 font-normal'>
                     {item.name}
                   </span>
-                  <span className=' text-sm leading-[1.6] text-gray-400 font-normal'>
-                    {item.title}
-                  </span>
+                  <div className='flex-row'>
+                    <span className=' text-sm leading-[1.6] text-gray-400 font-normal'>
+                      {item.title}
+                    </span>
+                    <span className='ml-5 text-sm leading-[1.6] text-gray-400 font-normal'>
+                      {Array.from({ length: item.rating }).map((_, i) => (
+                        <span
+                          key={i}
+                          className='text-yellow-400'
+                        >
+                          ★
+                        </span>
+                      ))}
+                    </span>
+                  </div>
                 </span>
               </div>
             </blockquote>
