@@ -41,6 +41,7 @@ export const authOptions = {
 
         try {
           await dbConnect();
+            
 
           // Fetching the user by email
           const user = await User.findOne({ email: credentials.email }).exec();
