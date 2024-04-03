@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 // Imports
-import React, { useEffect, useState } from 'react';
-import { InfiniteMovingCards } from '@/components/ui-library/infinite-moving-cards';
-import { ReviewData } from '@/lib/types';
+import React, { useEffect, useState } from "react";
+import { InfiniteMovingCards } from "@/components/ui-library/infinite-moving-cards";
+import { ReviewData } from "@/lib/types";
 
 /*
  * Reviews component
@@ -23,11 +23,11 @@ export default function Reviews() {
 
   return (
     <InfiniteMovingCards
-      direction='left'
-      speed='normal'
+      direction="left"
+      speed="normal"
       pauseOnHover={false}
       items={reviews}
-      className='py-10 w-full overflow-hidden'
+      className="py-10 w-full overflow-hidden"
     />
   );
 }
@@ -38,11 +38,12 @@ export default function Reviews() {
  */
 async function fetchReviews() {
   try {
-    const response = await fetch('/api/reviews/getReviews');
+    const response = await fetch("/api/reviews/getReviews");
     const data = await response.json();
+    if (!data) return;
     // TODO: Uses UserID currently. Fix this to use the actual name of the user
     return data.map((review: ReviewData) => ({
-      title: 'Kunde',
+      title: "Kunde",
       quote: review.content,
       name: review.author.name,
       rating: review.rating,
