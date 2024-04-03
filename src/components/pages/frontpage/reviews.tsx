@@ -24,7 +24,7 @@ export default function Reviews() {
   return (
     <InfiniteMovingCards
       direction='left'
-      speed='normal'
+      speed='fast'
       pauseOnHover={false}
       items={reviews}
       className='py-10 w-full overflow-hidden'

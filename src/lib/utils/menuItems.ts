@@ -90,6 +90,10 @@ export const dashboardMenuItems = [
     path: '/dashboard/settings',
   },
   {
+    name: 'Feedback',
+    path: '/dashboard/review',
+  },
+  {
     name: 'Projekter',
     path: '/dashboard/projects',
   },

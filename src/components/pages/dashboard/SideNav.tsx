@@ -18,7 +18,7 @@ export default function SideNav() {
   return (
     <>
       <div
-        className='h-full flex flex-col gap-2 absolute top-5 right-5 z-50 cursor-pointer md:hidden overflow-hidden'
+        className='h-full flex flex-col gap-2 absolute top-5 right-5 z-50 cursor-pointer overflow-hidden'
         onClick={toggleHamburgerMenu}
       >
         <div
@@ -38,8 +38,8 @@ export default function SideNav() {
         ></div>
       </div>
       <aside
-        className={`border-r-2 overflow-y-auto border-slate-400 transition absolute pt-5 h-full bg-primary/20 left-0 top-0 ${
-          menuOpen ? 'w-[60vw]' : 'w-0 border-r-0'
+        className={`border-r-2 overflow-y-auto border-slate-400 transition-all ease-linear absolute md:block z-50 pt-5 h-full bg-primary/20 left-0 top-0 ${
+          menuOpen ? 'w-[60vw] md:w-[20vw]' : 'w-0 border-r-0'
         }`}
       >
         <nav>
@@ -47,10 +47,9 @@ export default function SideNav() {
             {dashboardMenuItems.map((link: any) => (
               <li key={link.name}>
                 <Button
-                  className={`w-full transition ${
-                    menuOpen ? 'translate-x-0' : '-translate-x-[300%]'
-                  }`}
+                  className='w-full'
                   asChild
+                  onClick={toggleHamburgerMenu}
                 >
                   <Link href={link.path}>{link.name}</Link>
                 </Button>

@@ -1,5 +1,3 @@
-// Make a getAllReviews NextJS api endpoint
-
 import type { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from '@/lib/server/dbConnect';
 import Review from '@/lib/models/Review';
@@ -9,6 +7,7 @@ function getAllReviews(
   req: NextApiRequest,
   res: NextApiResponse<ReviewData[] | { message: string }>
 ) {
+  // TODO: lav det her lort
   switch (req.method) {
     case 'GET':
       return getReviews(req, res);
@@ -26,8 +25,7 @@ async function getReviews(
   await dbConnect();
 
   try {
-    const reviews: ReviewData[] = await Review.find().populate('author', 'name');
-    res.status(200).json(reviews);
+    //   Skriv noget cool kode til at finde brugerens review...
   } catch (error) {
     res.status(500).json({ message: 'Failed to fetch reviews.' });
   }

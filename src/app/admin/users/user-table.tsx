@@ -17,7 +17,6 @@ export function UserTable() {
   useEffect(() => {
     // Define the async function inside the useEffect
     const fetchData = async () => {
-      console.log('Fetching users');
       try {
         const response = await fetch('/api/admin/users');
         if (!response.ok) {

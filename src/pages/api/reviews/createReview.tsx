@@ -25,7 +25,6 @@ async function createNewReview(
   const { author, rating, content } = req.body;
 
   try {
-    console.log(req.body);
     const existingReview = await Review.findOne({ author });
     if (existingReview) {
       return res
@@ -37,7 +36,6 @@ async function createNewReview(
       return res.status(400).json({ message: 'Rating exceeds limit.' });
     }
 
-    console.log(content.length);
     if (content.length > 1000) {
       return res.status(400).json({ message: 'Review length exceeds limit.' });
     }

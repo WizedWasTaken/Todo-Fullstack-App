@@ -29,17 +29,6 @@ export default function DynamicBreadcrump() {
         {urls.map((url, index) => {
           const href = `/${urls.slice(0, index + 1).join('/')}`;
           const capitalizedUrl = url.charAt(0).toUpperCase() + url.slice(1);
-          console.log(
-            'url:',
-            url,
-            'href:',
-            href,
-            'capitalizedUrl:',
-            capitalizedUrl
-          );
-          console.log('urls:', urls);
-          console.log('index:', index);
-          console.log('urls.length:', urls.length);
           return (
             <BreadcrumbItem key={url}>
               {index == 0 && (
