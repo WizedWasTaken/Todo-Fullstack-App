@@ -41,7 +41,6 @@ export const authOptions = {
 
         try {
           await dbConnect();
-            
 
           // Fetching the user by email
           const user = await User.findOne({ email: credentials.email }).exec();
@@ -80,6 +79,7 @@ export const authOptions = {
     },
     async jwt({ token, user }: { token: any; user: any }) {
       const dbUser = await getUserInfo(token.email);
+      token.id = dbUser.id;
       token.groups = dbUser.group;
       token.image = dbUser.image;
       return token;
