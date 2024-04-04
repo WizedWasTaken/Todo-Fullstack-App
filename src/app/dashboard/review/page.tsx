@@ -9,25 +9,28 @@ import { ReviewData } from '@/lib/types';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui-library/button';
 import React from 'react';
+import { redirect, usePathname } from 'next/navigation';
 
 export default function Review() {
   const { data: session } = useSession();
   const [review, setReview] = useState<ReviewData | null>(null);
-  const [currentRating, setCurrentRating] = useState(3);
+  const [currentRating, setCurrentRating] = useState(5);
 
-  const fetchReviewData = async () => {
+  /*
+   * Fetches the review data and sets the review state
+   */
+  const fetchAndSetReviewData = async () => {
     const reviewData = await fetchReview();
     if (reviewData) {
       setReview(reviewData);
       setCurrentRating(reviewData.rating);
     }
-    setReview(reviewData);
   };
 
-  useEffect(() => {
-    fetchReviewData();
-  }, []);
-
+  /*
+   * Handles the form submission
+   * @param e Form event
+   */
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
@@ -42,17 +45,26 @@ export default function Review() {
       },
       body: JSON.stringify({
         content,
-        email: session?.user?.email,
+        email: session?.user?.email, // Assuming session is defined elsewhere
         rating: currentRating,
       }),
     });
 
     if (response.ok) {
       alert('Anmeldelse oprettet');
+      await fetchAndSetReviewData();
     } else {
-      alert(`Anmeldelse kunne ikke oprettes`);
+      alert('Anmeldelse kunne ikke oprettes');
     }
   };
+
+  /*
+   * Fetches the review data on component mount
+   */
+  useEffect(() => {
+    fetchAndSetReviewData();
+  }, []);
+
   return (
     <main className='flex flex-col flex-grow space-y-5'>
       <h1 className='text-2xl text-center'>Opdater din anmeldelse</h1>
@@ -90,7 +102,7 @@ export default function Review() {
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'
-                onClick={() => setCurrentRating(rating)} // Add this line
+                onClick={() => setCurrentRating(rating)}
               >
                 <path
                   strokeLinecap='round'
@@ -103,7 +115,7 @@ export default function Review() {
           ))}
         </div>
         <Button
-          className={`w-full ${
+          className={`w-full text-white ${
             review == null
               ? 'bg-blue-500 hover:bg-blue-600'
               : 'bg-green-500 hover:bg-green-600'
@@ -114,6 +126,32 @@ export default function Review() {
           <BottomGradient />
         </Button>
       </form>
+      {review && (
+        <Button
+          className='w-full bg-red-500 hover:bg-red-600 text-white'
+          onClick={async () => {
+            const response = await fetch('/api/reviews/deleteReview', {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                email: session?.user?.email,
+              }),
+            });
+
+            if (response.ok) {
+              alert('Anmeldelse slettet');
+              setReview(null);
+            } else {
+              alert('Anmeldelse kunne ikke slettes');
+            }
+          }}
+        >
+          Slet anmeldelse
+          <BottomGradient />
+        </Button>
+      )}
       {review && <CreatedReviewAlert />}
     </main>
   );
