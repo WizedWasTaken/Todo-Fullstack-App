@@ -8,21 +8,33 @@ const TaskSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Project',
   },
-  developer: {
-    type: Schema.Types.ObjectId,
-    ref: 'User',
-  },
+  developers: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+      },
+      commits: { type: Number, default: 0 },
+    },
+  ],
   status: {
     type: String,
-    enum: ['open', 'inProgress', 'completed'],
-    default: 'open',
+    enum: ['Åben', 'I gang', 'Færdig', 'Lukket', 'Afventer', 'Annulleret'],
+    default: 'Åben',
   },
   priority: {
     type: String,
-    enum: ['low', 'medium', 'high', 'critical'],
-    default: 'medium',
+    enum: ['Lav', 'Mellem', 'Høj', 'Kritisk'],
+    default: 'Mellem',
   },
-  dueDate: { type: Date, default: Date.now },
+  files: [
+    {
+      name: { type: String },
+      url: { type: String },
+    },
+  ],
+  startDate: { type: Date, default: Date.now },
+  dueDate: { type: Date },
   comments: [
     {
       user: {
@@ -33,6 +45,20 @@ const TaskSchema = new Schema({
       date: { type: Date, default: Date.now },
     },
   ],
+  created: {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    date: { type: Date, default: Date.now },
+  },
+  updated: {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    date: { type: Date, default: Date.now },
+  },
 });
 
 const Task = mongoose.models.Task || mongoose.model('Task', TaskSchema);
