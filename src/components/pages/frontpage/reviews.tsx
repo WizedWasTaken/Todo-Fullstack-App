@@ -15,6 +15,8 @@ export default function Reviews() {
   useEffect(() => {
     const fetchReviewsData = async () => {
       const reviewsData = await fetchReviews();
+      console.log('reviewsData: ', reviewsData);
+      if (!reviewsData) return;
       setReviews(reviewsData);
     };
 
@@ -22,7 +24,13 @@ export default function Reviews() {
   }, []);
 
   return (
-    <div>
+    <>
+      {!reviews && (
+        <p>
+          Vi oplever i øjeblikket en teknisk fejl med vores anmeldelser. Vend
+          tilbage senere.
+        </p>
+      )}
       {reviews && (
         <InfiniteMovingCards
           direction='left'
@@ -32,7 +40,7 @@ export default function Reviews() {
           className='py-10 w-full overflow-hidden'
         />
       )}
-    </div>
+    </>
   );
 }
 
