@@ -25,13 +25,13 @@ export default function Reviews() {
 
   return (
     <>
-      {!reviews && (
+      {reviews.length == 0 && (
         <p>
           Vi oplever i øjeblikket en teknisk fejl med vores anmeldelser. Vend
           tilbage senere.
         </p>
       )}
-      {reviews && (
+      {reviews.length > 0 && (
         <InfiniteMovingCards
           direction='left'
           speed='fast'
