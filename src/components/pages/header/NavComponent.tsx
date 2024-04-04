@@ -16,7 +16,7 @@ import { Button } from '@/components/ui-library/button';
 export default function NavBar() {
   const pathname = usePathname();
   const { data: session } = useSession();
-
+  console.log('session', session);
   return (
     <nav className='justify-between w-full flex-row hidden md:flex'>
       <ul className='w-full hidden justify-center flex-row md:flex mt-5 relative'>
@@ -62,6 +62,18 @@ export default function NavBar() {
         )}
         {session && (
           <ul className='flex gap-2 justify-end items-end flex-grow'>
+            {(session.user as { groups?: string[] }).groups?.includes(
+              'admin'
+            ) && (
+              <li>
+                <Button
+                  asChild
+                  size={'lg'}
+                >
+                  <Link href='/admin'>Admin</Link>
+                </Button>
+              </li>
+            )}
             {profileMenuItems.map((item: any, index: any) => {
               return (
                 <li key={index}>

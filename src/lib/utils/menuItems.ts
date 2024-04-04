@@ -8,10 +8,6 @@ export const normalMenuItems = [
     path: '/',
   },
   {
-    name: 'Anmeld',
-    path: '/review',
-  },
-  {
     name: 'Om os',
     path: '/about',
   },

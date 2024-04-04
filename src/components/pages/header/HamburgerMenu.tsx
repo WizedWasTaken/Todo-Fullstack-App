@@ -160,6 +160,20 @@ export default function HamburgerMenu() {
             })}
           {session &&
             menuOpen &&
+            (session.user as { groups?: string[] }).groups?.includes(
+              'admin'
+            ) && (
+              <li>
+                <Button
+                  asChild
+                  size={'lg'}
+                >
+                  <Link href='/admin'>Admin</Link>
+                </Button>
+              </li>
+            )}
+          {session &&
+            menuOpen &&
             profileMenuItems.map((item, index) => {
               return (
                 <li key={index}>

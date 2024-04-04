@@ -96,7 +96,7 @@ export default function Review() {
               <label htmlFor={`star${rating}`}></label>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                className={`h-6 w-6 ${
+                className={`h-6 w-6 cursor-pointer ${
                   rating <= currentRating ? 'text-yellow-500' : 'text-gray-500'
                 }`}
                 fill='none'
