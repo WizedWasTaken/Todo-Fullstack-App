@@ -29,4 +29,6 @@ Requirements
 
 * **Customizable Reports:** Offer customizable reporting tools for generating progress reports, resource allocation, and other analytics tailored to different stakeholders’ needs.
 
-## E.R. Diagram
+## Flowchart
+
+[Can be found on Excalidraw](https://excalidraw.com/#json=d0eW8qGe_XoYNr42uL4pJ,Q0BRLavnwg3DtMAVE5iKRw)
