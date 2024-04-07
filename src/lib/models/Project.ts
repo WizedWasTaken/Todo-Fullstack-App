@@ -28,8 +28,6 @@ const ProjectSchema = new Schema({
     enum: ['active', 'inactive'],
     default: 'active',
   },
-  startDate: { type: Date, default: Date.now },
-  endDate: { type: Date },
   comments: [
     {
       user: {
@@ -54,6 +52,7 @@ const ProjectSchema = new Schema({
     },
     date: { type: Date, default: Date.now },
   },
+  endDate: { type: Date },
 });
 
 const Project =
