@@ -47,12 +47,14 @@ const PricingSwitch = ({ onSwitch }: PricingSwitchProps) => (
       <TabsTrigger
         value='0'
         className='text-base'
+        aria-label='Månedlig'
       >
         Månedlig
       </TabsTrigger>
       <TabsTrigger
         value='1'
         className='text-base'
+        aria-label='Årlig'
       >
         Årlig
       </TabsTrigger>
