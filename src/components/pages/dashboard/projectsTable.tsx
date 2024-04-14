@@ -3,7 +3,6 @@
 // Imports
 import React from 'react';
 import { DataTable } from '@/components/data-table/data-table';
-import { testProjects } from '@/components/pages/dashboard/testProjects';
 import { ProjectTableColumns } from '@/lib/theme/columnDefinitions';
 
 /*
@@ -12,10 +11,18 @@ import { ProjectTableColumns } from '@/lib/theme/columnDefinitions';
  * It is possible to delete users from this page.
  */
 export function ProjectsTable() {
+  const [projects, setProjects] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch('/api/dashboard/projects')
+      .then((res) => res.json())
+      .then((data) => setProjects(data));
+  }, []);
+
   return (
     <>
       <DataTable
-        data={testProjects}
+        data={projects}
         columns={ProjectTableColumns}
       />
     </>

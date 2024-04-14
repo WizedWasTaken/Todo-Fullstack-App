@@ -189,8 +189,48 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
       />
     ),
     cell: ({ row }) => {
-      const name: string = row.getValue('description');
-      return <div className={'text-right font-medium'}>{name}</div>;
+      const description: string = row.getValue('description');
+      return <div className={'text-right font-medium'}>{description}</div>;
+    },
+  },
+  {
+    accessorKey: 'developers',
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Udviklere'
+      />
+    ),
+    cell: ({ row }) => {
+      // Fetch the developers array from the row
+      const developers: { user: { name: string } } = row.getValue('developers');
+      console.log(developers);
+      // @ts-ignore
+      const devNames = developers.map((dev) => dev.user.name).join(',\n');
+      return (
+        <div
+          className={
+            'text-right font-medium text-wrap overflow-auto flex justify-end'
+          }
+        >
+          <p style={{ maxWidth: '200px' }}>{devNames || 'IKKE SAT'}</p>
+        </div>
+      );
+    },
+  },
+  {
+    accessorKey: 'tasks',
+    header: ({ column }) => (
+      <DataTableColumnHeader
+        column={column}
+        title='Opgaver'
+      />
+    ),
+    cell: ({ row }) => {
+      // Vis antal af opgaver
+      const tasks: string[] = row.getValue('tasks');
+      const count = tasks.length;
+      return <div className={'text-right font-medium'}>{count}</div>;
     },
   },
   {
@@ -202,73 +242,52 @@ export const ProjectTableColumns: ColumnDef<TestProjectData>[] = [
       />
     ),
     cell: ({ row }) => {
-      const name: string = row.getValue('status');
-
-      return <div className={'text-right font-medium'}>{name}</div>;
+      const status: string = row.getValue('status');
+      return <div className={'text-right font-medium'}>{status}</div>;
     },
   },
+  // TODO: Should comments be shown?
   {
-    accessorKey: 'startDate',
+    accessorKey: 'created',
     header: ({ column }) => (
       <DataTableColumnHeader
         column={column}
-        title='Start Dato'
+        title='Oprettet'
       />
     ),
     cell: ({ row }) => {
-      const name: string = row.getValue('startDate');
-      const date = new Date(name).toDateString();
+      const created: string = row.getValue('created');
+      const date = new Date(created).toUTCString();
+      // const dateString = date.toISOString().split('T')[0];
       return <div className={'text-right font-medium'}>{date}</div>;
     },
   },
-  {
-    accessorKey: 'endDate',
-    header: ({ column }) => (
-      <DataTableColumnHeader
-        column={column}
-        title='Slut Dato'
-      />
-    ),
-    cell: ({ row }) => {
-      const name: string = row.getValue('endDate');
-      const checkName = name.trim();
-      let date: string;
-      // Hvis name er null, undefined eller tom.
-      if (checkName.length != 0) {
-        date = new Date(name).toDateString();
-      } else {
-        date = 'Ikke færdig';
-      }
-      return <div className={'text-right font-medium'}>{date}</div>;
-    },
-  },
-  {
-    accessorKey: 'progress',
-    header: ({ column }) => (
-      <DataTableColumnHeader
-        column={column}
-        title='Punkter opfyldt'
-      />
-    ),
-    cell: ({ row }) => {
-      const name: string[] = row.getValue('progress');
-      return <div className={'text-right font-medium'}>{name}</div>;
-    },
-  },
-  {
-    accessorKey: 'members',
-    header: ({ column }) => (
-      <DataTableColumnHeader
-        column={column}
-        title='Medlemmer'
-      />
-    ),
-    cell: ({ row }) => {
-      const members: UserData[] = row.getValue('members');
-      const formatted = members.map((member) => member.name).join(', ');
-      return <div className={'text-right font-medium'}>{formatted}</div>;
-    },
-  },
+  // {
+  //   accessorKey: 'updated',
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader
+  //       column={column}
+  //       title='Opdateret'
+  //     />
+  //   ),
+  //   cell: ({ row }) => {
+  //     const updated: string = row.getValue('updated');
+  //     return <div className={'text-right font-medium'}>{updated}</div>;
+  //   },
+  // },
+  // {
+  //   accessorKey: 'endDate',
+  //   header: ({ column }) => (
+  //     <DataTableColumnHeader
+  //       column={column}
+  //       title='Slutdato'
+  //     />
+  //   ),
+  //   cell: ({ row }) => {
+  //     const endDate: string = row.getValue('endDate');
+  //     return <div className={'text-right font-medium'}>{endDate}</div>;
+  //   },
+  // },
   {
     id: 'actions',
     cell: ({ row }) => {

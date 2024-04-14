@@ -11,12 +11,6 @@ const userSchema = new mongoose.Schema({
     default: 'free',
     enum: ['free', 'pro', 'enterprise', 'admin', 'allPerms', 'friend'],
   },
-  projects: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Project',
-    },
-  ],
   provider: { type: String },
   providerId: { type: String },
 });

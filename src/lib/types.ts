@@ -25,7 +25,7 @@ export interface ProjectData {
   startDate: string;
   endDate: string;
   progress: number;
-  members: UserData[];
+  developers: UserData[];
 }
 
 // TESTING

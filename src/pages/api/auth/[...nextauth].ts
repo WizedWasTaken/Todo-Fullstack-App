@@ -73,6 +73,7 @@ export const authOptions = {
     async session({ session, user }: { session: any; user: any }) {
       await dbConnect();
       const dbUser = await getUserInfo(session.user.email);
+      session.user.id = dbUser._id
       session.user.groups = dbUser.group;
       session.user.image = dbUser.image;
       return session;

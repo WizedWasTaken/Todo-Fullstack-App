@@ -14,6 +14,7 @@ import { Label } from '@/components/ui-library/label';
 import { ShadCNInput } from '@/components/ui-library/ShadCN-input';
 import { Textarea } from '@/components/ui-library/textarea';
 import { DialogClose } from '@radix-ui/react-dialog';
+import { getSession } from 'next-auth/react';
 import React from 'react';
 
 export function CreateProjectMenu() {
@@ -21,14 +22,19 @@ export function CreateProjectMenu() {
   const nameRef = React.useRef<HTMLInputElement>(null);
   const descriptionRef = React.useRef<HTMLTextAreaElement>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    console.log(e.currentTarget);
-    console.log('Form submitted');
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    const user = await getSession();
+    console.log(user);
     e.preventDefault();
-    alert('Project created!');
     const name = nameRef.current?.value;
     const description = descriptionRef.current?.value;
-    alert(JSON.stringify({ name, description }));
+    fetch('/api/dashboard/projects', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name, description, user }),
+    });
   };
 
   const handleButtonClick = () => {
